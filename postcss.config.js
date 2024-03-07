@@ -1,13 +1,16 @@
-// postcss.config.js
-module.exports = {
+import tailwindcss from "tailwindcss";
+import purgecss from "@fullhuman/postcss-purgecss";
+
+export default {
   plugins: [
-    require("tailwindcss"),
-    // Añade la configuración de PurgeCSS
-    require("@fullhuman/postcss-purgecss")({
+    tailwindcss,
+    purgecss({
       content: [
         "./index.html",
         "./src/**/*.vue",
         // Agrega cualquier otra ruta de archivos donde se utilicen tus estilos CSS
+        "./src/components/**/*.js",
+        "./src/pages/**/*.js",
       ],
       defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
     }),
