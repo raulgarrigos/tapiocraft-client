@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <h1>TapioCraft</h1>
   </div>
 </template>
 
