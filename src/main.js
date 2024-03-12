@@ -1,16 +1,8 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import { createApp } from "vue";
 import App from "./App.vue";
+import router from "./router";
 
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  routes: [
-    // { path: "/", component: Boards },
-  ],
-});
-
-new Vue({
-  router,
-  render: (h) => h(App),
-}).$mount("#root");
+const app = createApp(App);
+app.use(router);
+app.use(store);
+app.mount("#app");
