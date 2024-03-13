@@ -38,6 +38,20 @@
           />
         </div>
 
+        <div class="form-group">
+          <label for="passwordConfirm">Confirm Password</label>
+          <input
+            type="password"
+            id="passwordConfirm"
+            v-model="passwordConfirm"
+            @input="checkPasswordMatch"
+            class="form-control"
+          />
+        </div>
+
+        <!-- Show error message if passwords don't match -->
+        <p v-if="!passwordsMatch" style="color: red">Passwords do not match</p>
+
         <br />
 
         <button
@@ -66,8 +80,15 @@ export default {
     const username = ref("");
     const email = ref("");
     const password = ref("");
+    const passwordConfirm = ref("");
     const errorMessage = ref("");
     const router = useRouter();
+    const passwordsMatch = ref(true);
+
+    // Function to check if passwords match
+    const checkPasswordMatch = () => {
+      passwordsMatch.value = password.value === passwordConfirm.value;
+    };
 
     const handleSignup = async () => {
       const newUser = {
@@ -76,6 +97,11 @@ export default {
         password: password.value,
       };
 
+      // Check if passwords match before sending registration request
+      if (!passwordsMatch.value) {
+        errorMessage.value = "Passwords do not match";
+        return;
+      }
       try {
         await service.post("/auth/register", newUser);
         const credentials = {
@@ -94,7 +120,7 @@ export default {
       }
     };
 
-    // Cuando el componente se monta, se llama a authenticateUser para verificar la autenticación
+    // Call authenticateUser when the component is mounted to verify authentication
     onMounted(() => {
       authContext.authenticateUser();
     });
@@ -103,9 +129,12 @@ export default {
       username,
       email,
       password,
+      passwordConfirm,
       errorMessage,
       handleSignup,
       authContext,
+      passwordsMatch,
+      checkPasswordMatch,
     };
   },
 };
