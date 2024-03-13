@@ -55,9 +55,10 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { useRoute } from "vue-router";
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import service from "../../services/config";
+import authContext from "../../context/auth.context";
 
 export default {
   name: "Register",
@@ -66,13 +67,13 @@ export default {
     const email = ref("");
     const password = ref("");
     const errorMessage = ref("");
-    const route = useRoute();
+    const router = useRouter();
 
     const handleSignup = async () => {
       const newUser = {
         username: username.value,
         email: email.value,
-        passowrd: password.value,
+        password: password.value,
       };
 
       try {
@@ -83,15 +84,20 @@ export default {
         };
         const response = await service.post("/auth/login", credentials);
         localStorage.setItem("authToken", response.data.authToken);
-        route.push("/");
+        router.push("/");
       } catch (error) {
         if (error.response && error.response.status === 400) {
           errorMessage.value = error.response.data.errorMessage;
         } else {
-          route.push("/error");
+          router.push("/error");
         }
       }
     };
+
+    // Cuando el componente se monta, se llama a authenticateUser para verificar la autenticación
+    onMounted(() => {
+      authContext.authenticateUser();
+    });
 
     return {
       username,
@@ -99,6 +105,7 @@ export default {
       password,
       errorMessage,
       handleSignup,
+      authContext,
     };
   },
 };
