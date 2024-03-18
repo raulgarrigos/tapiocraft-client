@@ -62,7 +62,7 @@
           Sign up
         </button>
 
-        <p style="color: red">{{ errorMessage }}</p>
+        <p style="color: red" v-html="errorMessage"></p>
       </form>
     </div>
   </div>
