@@ -12,6 +12,7 @@ function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const { authenticateUser } = useContext(AuthContext);
@@ -20,9 +21,18 @@ function Register() {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+
   const handleSignup = async (e) => {
     e.preventDefault();
+
     const newUser = { username, email, password };
+
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match");
+      return;
+    }
+
     try {
       await service.post("/auth/register", newUser);
 
@@ -85,6 +95,16 @@ function Register() {
               name="password"
               value={password}
               onChange={handlePasswordChange}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formConfirmPassword">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
             />
           </Form.Group>
 
