@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
 import service from "../../services/config";
 import { AuthContext } from "../../context/auth.context";
 
@@ -13,6 +14,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const { authenticateUser } = useContext(AuthContext);
@@ -22,11 +24,20 @@ function Register() {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+  const handleDateOfBirthChange = (date) => {
+    console.log("Selected Date:", date);
+    setDateOfBirth(date);
+  };
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    const newUser = { username, email, password };
+    const newUser = {
+      username,
+      email,
+      password,
+      dateOfBirth,
+    };
 
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match");
@@ -34,9 +45,10 @@ function Register() {
     }
 
     try {
+      console.log(newUser);
       await service.post("/auth/register", newUser);
 
-      const credentials = { username, password };
+      const credentials = { username, password, dateOfBirth };
       const response = await service.post("/auth/login", credentials);
 
       localStorage.setItem("authToken", response.data.authToken);
@@ -105,6 +117,19 @@ function Register() {
               name="confirmPassword"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formDateOfBirth">
+            <Form.Label>Date of Birth</Form.Label>
+            <br />
+            <DatePicker
+              selected={dateOfBirth}
+              onChange={handleDateOfBirthChange}
+              dateFormat="dd/MM/yyyy"
+              showYearDropdown
+              scrollableYearDropdown
+              yearDropdownItemNumber={100}
             />
           </Form.Group>
 
