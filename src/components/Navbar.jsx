@@ -24,6 +24,7 @@ function AppNavbar() {
     return (
       <div className="Navbar">
         <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href={`/profile/${loggedUser._id}`}>Profile</Nav.Link>
         <Button
           variant="outline-danger"
           size="sm"
