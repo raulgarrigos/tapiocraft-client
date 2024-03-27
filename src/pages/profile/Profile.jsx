@@ -99,7 +99,9 @@ function Profile() {
         <h5>Tiendas creadas por {userData.username}:</h5>
         <ul>
           {stores.map((store) => (
-            <li key={store._id}>{store.name}</li>
+            <Link key={store._id} to={`/store/${store._id}`}>
+              <p>{store.name}</p>
+            </Link>
           ))}
         </ul>
       </div>

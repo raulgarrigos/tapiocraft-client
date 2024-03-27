@@ -14,6 +14,7 @@ import IsPrivate from "./components/IsPrivate";
 import StoreCreate from "./pages/store/StoreCreate";
 import StoreEdit from "./pages/store/StoreEdit";
 import AllStores from "./pages/store/AllStores";
+import StoreDetails from "./pages/store/StoreDetails";
 
 // components
 
@@ -40,6 +41,7 @@ function App() {
 
         <Route path="/all-stores" element={<AllStores />} />
         <Route path="/store/create" element={<StoreCreate />} />
+        <Route path="/store/:storeId" element={<StoreDetails />} />
         <Route path="/store/create" element={<StoreEdit />} />
 
         <Route path="/error" element={<Error />} />
