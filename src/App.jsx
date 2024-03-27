@@ -11,6 +11,9 @@ import NotFound from "./pages/error/NotFound";
 import Navbar from "./components/Navbar";
 import ProfileEdit from "./pages/profile/ProfileEdit";
 import IsPrivate from "./components/IsPrivate";
+import StoreCreate from "./pages/store/StoreCreate";
+import StoreEdit from "./pages/store/StoreEdit";
+import AllStores from "./pages/store/AllStores";
 
 // components
 
@@ -34,6 +37,10 @@ function App() {
             </IsPrivate>
           }
         />
+
+        <Route path="/all-stores" element={<AllStores />} />
+        <Route path="/store/create" element={<StoreCreate />} />
+        <Route path="/store/create" element={<StoreEdit />} />
 
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<NotFound />} />

@@ -74,6 +74,21 @@ function Profile() {
             </Button>
           </Link>
         )}
+
+        <br />
+        <br />
+
+        {loggedUser?._id === params.userId && (
+          <Link to={"/store/create"}>
+            <Button
+              variant="light"
+              type="submit"
+              style={{ backgroundColor: "#fdb14d" }}
+            >
+              Create store
+            </Button>
+          </Link>
+        )}
       </div>
     </div>
   );
