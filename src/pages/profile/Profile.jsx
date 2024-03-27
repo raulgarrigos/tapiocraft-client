@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 
 function Profile() {
   const [userData, setUserData] = useState(null);
+  const [stores, setStores] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const params = useParams();
@@ -25,6 +26,11 @@ function Profile() {
       const response = await service.get(`/profile/${params.userId}`);
       console.log(response.data);
       setUserData(response.data);
+
+      const storesResponse = await service.get(`/store/user/${params.userId}`);
+      console.log(storesResponse.data);
+      setStores(storesResponse.data);
+
       setIsLoading(false);
     } catch (error) {
       redirect("/error");
@@ -89,6 +95,13 @@ function Profile() {
             </Button>
           </Link>
         )}
+
+        <h5>Tiendas creadas por {userData.username}:</h5>
+        <ul>
+          {stores.map((store) => (
+            <li key={store._id}>{store.name}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
