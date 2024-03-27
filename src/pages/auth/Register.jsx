@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import DatePicker from "react-datepicker";
 import service from "../../services/config";
 import { AuthContext } from "../../context/auth.context";
 
@@ -9,23 +8,35 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 
+// Importaciones de bootstrap-datepicker
+import "bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
+import $ from "jquery";
+import "bootstrap-datepicker";
+
 function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState(null);
+  const [dateOfBirth, setDateOfBirth] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const { authenticateUser } = useContext(AuthContext);
   const redirect = useNavigate();
 
+  useEffect(() => {
+    // Inicializar bootstrap-datepicker
+    $("#datepicker").datepicker({
+      weekStart: 1, // Configurar el inicio de la semana en Lunes
+    });
+  }, []);
+
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
+
   const handleDateOfBirthChange = (date) => {
-    console.log("Selected Date:", date);
     setDateOfBirth(date);
   };
 
@@ -120,16 +131,15 @@ function Register() {
             />
           </Form.Group>
 
+          <br />
+
           <Form.Group controlId="formDateOfBirth">
             <Form.Label>Date of Birth</Form.Label>
-            <br />
-            <DatePicker
-              selected={dateOfBirth}
-              onChange={handleDateOfBirthChange}
-              dateFormat="dd/MM/yyyy"
-              showYearDropdown
-              scrollableYearDropdown
-              yearDropdownItemNumber={100}
+
+            <input
+              type="date"
+              value={dateOfBirth}
+              onChange={(e) => setDateOfBirth(e.target.value)}
             />
           </Form.Group>
 

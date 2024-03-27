@@ -61,7 +61,6 @@ function Profile() {
         )}
 
         {userData.phoneNumber && <p>{userData.phoneNumber}</p>}
-        {userData.dateOfBirth && <p>{userData.dateOfBirth}</p>}
 
         <br />
         {loggedUser?._id === params.userId && (

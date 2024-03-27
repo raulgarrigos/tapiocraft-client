@@ -113,15 +113,6 @@ function ProfileEdit() {
             />
           </Form.Group>
 
-          <Form.Group controlId="formDateOfBirth">
-            <Form.Label>Date of Birth:</Form.Label>
-            <Form.Control
-              name="dateOfBirth"
-              onChange={handleInputChange}
-              defaultValue={userData.dateOfBirth}
-            />
-          </Form.Group>
-
           <Form.Group controlId="formPhoneNumber">
             <Form.Label>Phone:</Form.Label>
             <Form.Control
