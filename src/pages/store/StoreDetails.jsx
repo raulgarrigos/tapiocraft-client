@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
 import service from "../../services/config";
+
+// Bootstrap
+import Button from "react-bootstrap/Button";
 
 function StoreDetails() {
   const [storeDetails, setStoreDetails] = useState(null);
@@ -8,6 +12,8 @@ function StoreDetails() {
 
   const params = useParams();
   const redirect = useNavigate();
+
+  const { loggedUser } = useContext(AuthContext);
 
   useEffect(() => {
     getData();
@@ -38,6 +44,19 @@ function StoreDetails() {
       <p>Nombre: {storeDetails.name}</p>
       <p>Descripción de la tienda: {storeDetails.description}</p>
       <p>Categoría: {storeDetails.category}</p>
+
+      <br />
+      {loggedUser?._id === storeDetails.owner && (
+        <Link to={`/store/${storeDetails._id}/edit`}>
+          <Button
+            variant="light"
+            type="submit"
+            style={{ backgroundColor: "#fdb14d" }}
+          >
+            Edit store
+          </Button>
+        </Link>
+      )}
     </div>
   );
 }

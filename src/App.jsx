@@ -42,7 +42,7 @@ function App() {
         <Route path="/all-stores" element={<AllStores />} />
         <Route path="/store/create" element={<StoreCreate />} />
         <Route path="/store/:storeId" element={<StoreDetails />} />
-        <Route path="/store/create" element={<StoreEdit />} />
+        <Route path="/store/:storeId/edit" element={<StoreEdit />} />
 
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<NotFound />} />
