@@ -22,9 +22,7 @@ function StoreDetails() {
   const getData = async () => {
     try {
       const responseStore = await service.get(`/store/${params.storeId}`);
-
       setStoreDetails(responseStore.data);
-
       setIsLoading(false);
     } catch (error) {
       redirect("/error");
