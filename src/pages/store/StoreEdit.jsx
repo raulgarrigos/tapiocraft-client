@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
 import service from "../../services/config";
 
 // Bootstrap
@@ -13,6 +14,8 @@ function StoreEdit() {
 
   const redirect = useNavigate();
   const params = useParams();
+
+  const { loggedUser } = useContext(AuthContext);
 
   const handleInputChange = (e) => {
     const clone = JSON.parse(JSON.stringify(storeData));
@@ -37,10 +40,19 @@ function StoreEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log("Datos a enviar:", storeData);
-
       await service.put(`/store/${params.storeId}`, storeData);
       redirect(`/store/${params.storeId}`);
+      console.log("Store updated");
+    } catch (error) {
+      redirect("/error");
+    }
+  };
+
+  const handleDelete = async (e) => {
+    try {
+      await service.delete(`/store/${params.storeId}`);
+      redirect(`/profile/${loggedUser._id}`);
+      console.log("Store deleted");
     } catch (error) {
       redirect("/error");
     }
@@ -117,15 +129,23 @@ function StoreEdit() {
             </Form.Select>
           </Form.Group>
 
-          <Button
-            variant="light"
-            type="submit"
-            style={{ backgroundColor: "#fdb14d" }}
-          >
-            Confirm changes
-          </Button>
+          {storeData.owner === loggedUser._id && (
+            <Button
+              variant="light"
+              type="submit"
+              style={{ backgroundColor: "#fdb14d" }}
+            >
+              Confirm changes
+            </Button>
+          )}
+
           <br />
         </Form>
+        {storeData.owner === loggedUser._id && (
+          <Button variant="danger" type="submit" onClick={handleDelete}>
+            Delete store
+          </Button>
+        )}
       </Container>
     </div>
   );
