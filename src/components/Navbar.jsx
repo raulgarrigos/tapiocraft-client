@@ -24,6 +24,7 @@ function AppNavbar() {
     return (
       <div className="Navbar">
         <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href="/all-stores">Stores</Nav.Link>
         <Nav.Link href={`/profile/${loggedUser._id}`}>Profile</Nav.Link>
         <Button
           variant="outline-danger"
@@ -41,6 +42,7 @@ function AppNavbar() {
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/login">Login</Nav.Link>
         <Nav.Link href="/register">Create Account</Nav.Link>
+        <Nav.Link href="/all-stores">Stores</Nav.Link>
       </div>
     );
   }
