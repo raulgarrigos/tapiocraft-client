@@ -64,8 +64,6 @@ function StoreEdit() {
     return <h3>Loading...</h3>;
   }
 
-  // ! ESTO DA ERROR SI NO HAS HECHO LOGIN
-
   const isOwner = storeData && loggedUser && storeData.owner === loggedUser._id;
 
   // Styles
@@ -159,12 +157,23 @@ function StoreEdit() {
           </Container>
         </>
       )}
-      {!isOwner && (
+      {loggedUser && !isOwner && (
         <div>
-          <h3>You're not supposed to be here. Go back!</h3>
+          <h3>
+            You're not supposed to be here. Go back and edit your own store!
+          </h3>
           <br />
           <Link to={`/store/${params.storeId}`}>
             <Button variant="danger">Back</Button>
+          </Link>
+        </div>
+      )}
+      {!loggedUser && (
+        <div>
+          <h3>Please log in to edit your own store.</h3>
+          <br />
+          <Link to="/login">
+            <Button variant="primary">Log In</Button>
           </Link>
         </div>
       )}
