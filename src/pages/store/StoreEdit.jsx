@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../services/config";
 
@@ -67,13 +67,6 @@ function StoreEdit() {
   // ! ESTO DA ERROR SI NO HAS HECHO LOGIN
 
   const isOwner = storeData && loggedUser && storeData.owner === loggedUser._id;
-
-  // ! ESTO DA UN ERROR QUE HAY QUE REVISAR
-
-  if (!isOwner) {
-    redirect("/error");
-    return null;
-  }
 
   // Styles
   const containerStyle = {
@@ -165,6 +158,15 @@ function StoreEdit() {
             </Form>
           </Container>
         </>
+      )}
+      {!isOwner && (
+        <div>
+          <h3>You're not supposed to be here. Go back!</h3>
+          <br />
+          <Link to={`/store/${params.storeId}`}>
+            <Button variant="danger">Back</Button>
+          </Link>
+        </div>
       )}
     </div>
   );
