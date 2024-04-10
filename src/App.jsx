@@ -5,18 +5,26 @@ import { Routes, Route } from "react-router";
 import Home from "./pages/Home";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
+
 import Profile from "./pages/profile/Profile";
-import Error from "./pages/error/Error";
-import NotFound from "./pages/error/NotFound";
-import Navbar from "./components/Navbar";
 import ProfileEdit from "./pages/profile/ProfileEdit";
-import IsPrivate from "./components/IsPrivate";
+
+import AllStores from "./pages/store/AllStores";
 import StoreCreate from "./pages/store/StoreCreate";
 import StoreEdit from "./pages/store/StoreEdit";
-import AllStores from "./pages/store/AllStores";
 import StoreDetails from "./pages/store/StoreDetails";
 
+import AllProducts from "./pages/products/AllProducts";
+import ProductCreate from "./pages/products/ProductCreate";
+import ProductEdit from "./pages/products/ProductEdit";
+import ProductDetails from "./pages/products/ProductDetails";
+
+import Error from "./pages/error/Error";
+import NotFound from "./pages/error/NotFound";
+
 // components
+import Navbar from "./components/Navbar";
+import IsPrivate from "./components/IsPrivate";
 
 function App() {
   return (
@@ -43,6 +51,15 @@ function App() {
         <Route path="/store/create" element={<StoreCreate />} />
         <Route path="/store/:storeId" element={<StoreDetails />} />
         <Route path="/store/:storeId/edit" element={<StoreEdit />} />
+
+        <Route path="/all-products" element={<AllProducts />} />
+        <Route path="/store/:storeId/add-product" element={<ProductCreate />} />
+        <Route path="/store/:storeId/:productId" element={<ProductDetails />} />
+        <Route
+          path="/store/:storeId/:productId/edit"
+          element={<ProductEdit />}
+        />
+
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

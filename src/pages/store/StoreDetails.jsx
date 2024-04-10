@@ -45,15 +45,22 @@ function StoreDetails() {
 
       <br />
       {loggedUser?._id === storeDetails.owner && (
-        <Link to={`/store/${storeDetails._id}/edit`}>
-          <Button
-            variant="light"
-            type="submit"
-            style={{ backgroundColor: "#fdb14d" }}
-          >
-            Edit store
-          </Button>
-        </Link>
+        <div>
+          <Link to={`/store/${storeDetails._id}/edit`}>
+            <Button
+              variant="light"
+              type="submit"
+              style={{ backgroundColor: "#fdb14d" }}
+            >
+              Edit store
+            </Button>
+          </Link>
+          <Link to={`/store/${storeDetails._id}/add-product`}>
+            <Button type="submit" style={{ backgroundColor: "violet" }}>
+              Add a product
+            </Button>
+          </Link>
+        </div>
       )}
     </div>
   );
