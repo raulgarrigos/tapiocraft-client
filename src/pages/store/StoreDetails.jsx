@@ -33,7 +33,6 @@ function StoreDetails() {
     return <h3>Loading..</h3>;
   }
 
-  // ! AGREGAR BOTÓN PARA AÑADIR PRODUCTOS
   // ! RENDERIZAR PRODUCTOS AÑADIDOS
   // ! AGREGAR CONDICIONAL IF DE ADDRESS, REFUNDPOLICY
 
@@ -44,6 +43,7 @@ function StoreDetails() {
       <p>Categoría: {storeDetails.category}</p>
 
       <br />
+
       {loggedUser?._id === storeDetails.owner && (
         <div>
           <Link to={`/store/${storeDetails._id}/edit`}>
