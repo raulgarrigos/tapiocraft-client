@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 
 function StoreDetails() {
   const [storeDetails, setStoreDetails] = useState(null);
+  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const params = useParams();
@@ -21,8 +22,16 @@ function StoreDetails() {
 
   const getData = async () => {
     try {
-      const responseStore = await service.get(`/store/${params.storeId}`);
-      setStoreDetails(responseStore.data);
+      const response = await service.get(`/store/${params.storeId}`);
+      console.log(response.data);
+      setStoreDetails(response.data);
+
+      const productsResponse = await service.get(
+        `/store/${params.storeId}/products`
+      );
+      console.log(productsResponse.data);
+      setProducts(productsResponse.data);
+
       setIsLoading(false);
     } catch (error) {
       redirect("/error");
@@ -33,18 +42,29 @@ function StoreDetails() {
     return <h3>Loading..</h3>;
   }
 
-  // ! RENDERIZAR PRODUCTOS AÑADIDOS
   // ! AGREGAR CONDICIONAL IF DE ADDRESS, REFUNDPOLICY
 
   return (
     <div>
-      <p>Nombre: {storeDetails.name}</p>
-      <p>Descripción de la tienda: {storeDetails.description}</p>
-      <p>Categoría: {storeDetails.category}</p>
+      {storeDetails && (
+        <div key={storeDetails._id}>
+          <p>Nombre: {storeDetails.name}</p>
+          <p>Descripción de la tienda: {storeDetails.description}</p>
+          <p>Categoría: {storeDetails.category}</p>
+        </div>
+      )}
 
-      <br />
+      {products.map((product) => (
+        <div key={product._id}>
+          <Link to={`/store/${params.storeId}/${product._id}}`}>
+            <p>
+              {product.name}, {product.price}€
+            </p>
+          </Link>
+        </div>
+      ))}
 
-      {loggedUser?._id === storeDetails.owner && (
+      {loggedUser?._id === storeDetails?.owner && (
         <div>
           <Link to={`/store/${storeDetails._id}/edit`}>
             <Button
@@ -55,6 +75,7 @@ function StoreDetails() {
               Edit store
             </Button>
           </Link>
+
           <Link to={`/store/${storeDetails._id}/add-product`}>
             <Button type="submit" style={{ backgroundColor: "violet" }}>
               Add a product

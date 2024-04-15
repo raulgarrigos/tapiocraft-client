@@ -15,7 +15,6 @@ import StoreEdit from "./pages/store/StoreEdit";
 import StoreDetails from "./pages/store/StoreDetails";
 
 import AllProducts from "./pages/products/AllProducts";
-import ProductCreate from "./pages/products/ProductCreate";
 import ProductEdit from "./pages/products/ProductEdit";
 import ProductDetails from "./pages/products/ProductDetails";
 
@@ -25,6 +24,7 @@ import NotFound from "./pages/error/NotFound";
 // components
 import Navbar from "./components/Navbar";
 import IsPrivate from "./components/IsPrivate";
+import ProductCreate from "./pages/products/ProductCreate";
 
 function App() {
   return (

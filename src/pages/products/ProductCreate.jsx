@@ -1,7 +1,6 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import service from "../../services/config";
-import { AuthContext } from "../../context/auth.context";
 
 //Bootstrap
 import { Container, Form, Button } from "react-bootstrap";
@@ -12,8 +11,6 @@ function ProductCreate() {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState(1);
-
-  const { loggedUser } = useContext(AuthContext);
 
   const redirect = useNavigate();
   const params = useParams();
