@@ -56,7 +56,7 @@ function StoreDetails() {
 
       {products.map((product) => (
         <div key={product._id}>
-          <Link to={`/store/${params.storeId}/${product._id}}`}>
+          <Link to={`/store/${params.storeId}/${product._id}`}>
             <p>
               {product.name}, {product.price}€
             </p>
