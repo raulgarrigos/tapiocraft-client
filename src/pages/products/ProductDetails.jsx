@@ -54,9 +54,7 @@ function ProductDetails() {
 
       {loggedUser && loggedUser._id === storeDetails?.owner && (
         <div>
-          <Link
-            to={`/store/${productDetails.store._id}/${productDetails._id}/edit`}
-          >
+          <Link to={`/store/${params.storeId}/${productDetails._id}/edit`}>
             <Button
               variant="light"
               type="submit"

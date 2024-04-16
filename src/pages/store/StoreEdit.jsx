@@ -8,8 +8,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 
-// ! QUE LA PÁGINA SOLO SEA VISIBLE SI ERES EL OWNER
-
 function StoreEdit() {
   const [storeData, setStoreData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -50,7 +48,8 @@ function StoreEdit() {
     }
   };
 
-  const handleDelete = async (e) => {
+  // ! ESTO NO FUNCIONA BIEN. SE ELIMINA PERO NO HACE BIEN EL REDIRECT
+  const handleDelete = async () => {
     try {
       await service.delete(`/store/${params.storeId}`);
       redirect(`/profile/${loggedUser._id}`);
