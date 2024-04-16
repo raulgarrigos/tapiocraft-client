@@ -40,9 +40,6 @@ function ProductDetails() {
     return <h3>Loading..</h3>;
   }
 
-  // ! EDITAR PRODUCTO
-  // ! ELIMINAR PRODUCTO
-
   return (
     <div>
       <h4>Product Details</h4>

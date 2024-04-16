@@ -48,7 +48,6 @@ function StoreEdit() {
     }
   };
 
-  // ! ESTO NO FUNCIONA BIEN. SE ELIMINA PERO NO HACE BIEN EL REDIRECT
   const handleDelete = async () => {
     try {
       await service.delete(`/store/${params.storeId}`);
@@ -72,8 +71,6 @@ function StoreEdit() {
     padding: "20px",
     borderRadius: "8px",
   };
-
-  // ! ELIMINAR TIENDA
 
   return (
     <div>
