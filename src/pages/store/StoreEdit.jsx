@@ -147,14 +147,13 @@ function StoreEdit() {
                   Confirm changes
                 </Button>
               )}
-
-              <br />
-              {storeData.owner === loggedUser._id && (
-                <Button variant="danger" type="submit" onClick={handleDelete}>
-                  Delete store
-                </Button>
-              )}
             </Form>
+            <br />
+            {storeData.owner === loggedUser._id && (
+              <Button variant="danger" type="submit" onClick={handleDelete}>
+                Delete store
+              </Button>
+            )}
           </Container>
         </>
       )}

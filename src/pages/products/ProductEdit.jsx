@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Bootstrap
 import Button from "react-bootstrap/Button";
@@ -141,19 +141,19 @@ function ProductEdit() {
                 </Button>
               )}
               <br />
-              {storeData.owner === loggedUser._id && (
-                <Button variant="danger" type="submit" onClick={handleDelete}>
-                  Delete store
-                </Button>
-              )}
             </Form>
+            {storeData.owner === loggedUser._id && (
+              <Button variant="danger" type="submit" onClick={handleDelete}>
+                Delete store
+              </Button>
+            )}
           </Container>
         </>
       )}
       {loggedUser && !isOwner && (
         <div>
           <h3>
-            You're not supposed to be here. Go back and edit your own store!
+            You're not supposed to be here. Go back and edit your own product!
           </h3>
           <br />
           <Link to={`/store/${params.storeId}`}>
