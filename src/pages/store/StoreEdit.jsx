@@ -74,6 +74,8 @@ function StoreEdit() {
     borderRadius: "8px",
   };
 
+  // ! ELIMINAR TIENDA
+
   return (
     <div>
       {isOwner && (

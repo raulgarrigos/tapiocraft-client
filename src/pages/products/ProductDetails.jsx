@@ -1,13 +1,18 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import service from "../../services/config";
+import { AuthContext } from "../../context/auth.context";
+import { Button } from "react-bootstrap";
 
 function ProductDetails() {
   const [productDetails, setProductDetails] = useState(null);
+  const [storeDetails, setStoreDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const params = useParams();
   const redirect = useNavigate();
+
+  const { loggedUser } = useContext(AuthContext);
 
   useEffect(() => {
     getData();
@@ -15,11 +20,16 @@ function ProductDetails() {
 
   const getData = async () => {
     try {
-      const response = await service.get(
+      const productResponse = await service.get(
         `/store/${params.storeId}/products/${params.productId}`
       );
-      console.log(response.data);
-      setProductDetails(response.data);
+      console.log("Producto", productResponse.data);
+      setProductDetails(productResponse.data);
+
+      const storeReponse = await service.get(`/store/${params.storeId}`);
+      console.log("Tienda", storeReponse.data);
+      setStoreDetails(storeReponse.data);
+
       setIsLoading(false);
     } catch (error) {
       redirect("/error");
@@ -30,6 +40,9 @@ function ProductDetails() {
     return <h3>Loading..</h3>;
   }
 
+  // ! EDITAR PRODUCTO
+  // ! ELIMINAR PRODUCTO
+
   return (
     <div>
       <h4>Product Details</h4>
@@ -38,6 +51,22 @@ function ProductDetails() {
       <p>{productDetails.price}€</p>
       <p>{productDetails.stock} unidad/es</p>
       <p>{productDetails.images}</p>
+
+      {loggedUser && loggedUser._id === storeDetails?.owner && (
+        <div>
+          <Link
+            to={`/store/${productDetails.store._id}/${productDetails._id}/edit`}
+          >
+            <Button
+              variant="light"
+              type="submit"
+              style={{ backgroundColor: "#fdb14d" }}
+            >
+              Editar producto
+            </Button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
