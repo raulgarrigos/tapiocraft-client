@@ -6,6 +6,7 @@ import service from "../../services/config";
 function Cart() {
   const [cartDetails, setCartDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const params = useParams();
   const redirect = useNavigate();
@@ -15,6 +16,17 @@ function Cart() {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    if (cartDetails) {
+      // Calcular el precio total del carrito
+      const total = cartDetails.reduce(
+        (acc, item) => acc + item.product.price * item.quantity,
+        0
+      );
+      setTotalPrice(total);
+    }
+  }, [cartDetails]);
 
   const getData = async () => {
     try {
@@ -32,16 +44,17 @@ function Cart() {
   }
   return (
     <div>
-      {cartDetails.map((product) => (
-        <div key={product.product._id}>
+      {cartDetails.map((item) => (
+        <div key={item.product._id}>
           <span>
             <p>
-              {product.product.name} | {product.product.price}€ | Cantidad:{" "}
-              {product.quantity}
+              {item.product.name} | {item.product.price}€ | Cantidad:{" "}
+              {item.quantity} | Total: {item.product.price * item.quantity}€
             </p>
           </span>
         </div>
       ))}
+      <p>Total del carrito: {totalPrice}€</p>
     </div>
   );
 }
