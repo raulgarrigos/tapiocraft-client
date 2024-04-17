@@ -35,18 +35,10 @@ function Cart() {
     }
   };
 
-  const handleDelete = async (productId, quantity) => {
+  const handleDelete = async (productId) => {
     try {
       await service.delete(`/cart/products/${productId}`);
-
-      // Si la cantidad en el carrito es mayor que 1, simplemente actualizar los datos del carrito
-      if (quantity > 1) {
-        getData();
-      } else {
-        // Si la cantidad es 1, decrementar el stock del producto eliminado
-        await service.patch(`/cart/products/${productId}/decrementStock`);
-        getData(); // Actualizar los datos del carrito después de eliminar el producto
-      }
+      getData();
 
       console.log("Product removed from cart");
     } catch (error) {
