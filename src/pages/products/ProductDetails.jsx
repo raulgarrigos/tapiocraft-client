@@ -36,6 +36,16 @@ function ProductDetails() {
     }
   };
 
+  const addToCart = async () => {
+    try {
+      await service.post(`/cart/products/${params.productId}`);
+      console.log("Product added to cart");
+      redirect("/cart");
+    } catch (error) {
+      redirect("/error");
+    }
+  };
+
   if (isLoading) {
     return <h3>Loading..</h3>;
   }
@@ -48,6 +58,12 @@ function ProductDetails() {
       <p>{productDetails.price}€</p>
       <p>{productDetails.stock} unidad/es</p>
       <p>{productDetails.images}</p>
+
+      {loggedUser && loggedUser._id !== storeDetails?.owner && (
+        <Button variant="light" type="submit" onClick={addToCart}>
+          Añadir al carrito
+        </Button>
+      )}
 
       {loggedUser && loggedUser._id === storeDetails?.owner && (
         <div>

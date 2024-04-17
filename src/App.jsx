@@ -25,6 +25,7 @@ import NotFound from "./pages/error/NotFound";
 // components
 import Navbar from "./components/Navbar";
 import IsPrivate from "./components/IsPrivate";
+import Cart from "./pages/cart/Cart";
 
 function App() {
   return (
@@ -46,6 +47,8 @@ function App() {
             </IsPrivate>
           }
         />
+
+        <Route path="/cart" element={<Cart />} />
 
         <Route path="/all-stores" element={<AllStores />} />
         <Route path="/store/create" element={<StoreCreate />} />

@@ -26,6 +26,7 @@ function AppNavbar() {
         <Nav.Link href="/">Home</Nav.Link>
         <Nav.Link href="/all-stores">Stores</Nav.Link>
         <Nav.Link href={`/profile/${loggedUser._id}`}>Profile</Nav.Link>
+        <Nav.Link href="/cart">Carrito</Nav.Link>
         <Button
           variant="outline-danger"
           size="sm"
