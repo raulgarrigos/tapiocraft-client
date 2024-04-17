@@ -35,6 +35,25 @@ function Cart() {
     }
   };
 
+  const handleDelete = async (productId, quantity) => {
+    try {
+      await service.delete(`/cart/products/${productId}`);
+
+      // Si la cantidad en el carrito es mayor que 1, simplemente actualizar los datos del carrito
+      if (quantity > 1) {
+        getData();
+      } else {
+        // Si la cantidad es 1, decrementar el stock del producto eliminado
+        await service.patch(`/cart/products/${productId}/decrementStock`);
+        getData(); // Actualizar los datos del carrito después de eliminar el producto
+      }
+
+      console.log("Product removed from cart");
+    } catch (error) {
+      redirect("/error");
+    }
+  };
+
   if (isLoading) {
     return <h3>Loading...</h3>;
   }
@@ -48,6 +67,12 @@ function Cart() {
                 {item.product.name} | {item.product.price}€ | Cantidad:{" "}
                 {item.quantity} | Total: {item.product.price * item.quantity}€
               </p>
+              {/* Agregar botón para eliminar solo una instancia del producto */}
+              <button
+                onClick={() => handleDelete(item.product._id, item.quantity)}
+              >
+                Eliminar
+              </button>
             </span>
           </div>
         ))}
