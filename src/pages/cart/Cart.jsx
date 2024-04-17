@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import service from "../../services/config";
 
 function Cart() {
@@ -8,10 +7,7 @@ function Cart() {
   const [isLoading, setIsLoading] = useState(true);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const params = useParams();
   const redirect = useNavigate();
-
-  const { loggedUser } = useContext(AuthContext);
 
   useEffect(() => {
     getData();
@@ -44,16 +40,17 @@ function Cart() {
   }
   return (
     <div>
-      {cartDetails.map((item) => (
-        <div key={item.product._id}>
-          <span>
-            <p>
-              {item.product.name} | {item.product.price}€ | Cantidad:{" "}
-              {item.quantity} | Total: {item.product.price * item.quantity}€
-            </p>
-          </span>
-        </div>
-      ))}
+      {cartDetails &&
+        cartDetails.map((item) => (
+          <div key={item.product._id}>
+            <span>
+              <p>
+                {item.product.name} | {item.product.price}€ | Cantidad:{" "}
+                {item.quantity} | Total: {item.product.price * item.quantity}€
+              </p>
+            </span>
+          </div>
+        ))}
       <p>Total del carrito: {totalPrice}€</p>
     </div>
   );

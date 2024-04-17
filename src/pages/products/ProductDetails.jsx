@@ -59,11 +59,15 @@ function ProductDetails() {
       <p>{productDetails.stock} unidad/es</p>
       <p>{productDetails.images}</p>
 
-      {loggedUser && loggedUser._id !== storeDetails?.owner && (
-        <Button variant="light" type="submit" onClick={addToCart}>
-          Añadir al carrito
-        </Button>
-      )}
+      {loggedUser && loggedUser._id !== storeDetails?.owner ? (
+        productDetails.stock > 0 ? (
+          <Button variant="light" type="submit" onClick={addToCart}>
+            Añadir al carrito
+          </Button>
+        ) : (
+          <h3>We're out of stock!</h3>
+        )
+      ) : null}
 
       {loggedUser && loggedUser._id === storeDetails?.owner && (
         <div>
