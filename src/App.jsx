@@ -26,6 +26,7 @@ import NotFound from "./pages/error/NotFound";
 import Navbar from "./components/Navbar";
 import IsPrivate from "./components/IsPrivate";
 import Cart from "./pages/cart/Cart";
+import Checkout from "./pages/cart/Checkout";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         />
 
         <Route path="/cart" element={<Cart />} />
+        <Route path="/cart/checkout/:cartId" element={<Checkout />} />
 
         <Route path="/all-stores" element={<AllStores />} />
         <Route path="/store/create" element={<StoreCreate />} />
