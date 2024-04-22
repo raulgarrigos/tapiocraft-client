@@ -57,7 +57,7 @@ function Cart() {
   }
   return (
     <div>
-      {cartItems &&
+      {cartItems && cartItems.length > 0 ? (
         cartItems.map((item) => (
           <div key={item.product._id}>
             <span>
@@ -65,7 +65,6 @@ function Cart() {
                 {item.product.name} | {item.product.price}€ | Cantidad:{" "}
                 {item.quantity} | Total: {item.product.price * item.quantity}€
               </p>
-              {/* Agregar botón para eliminar solo una instancia del producto */}
               <Button
                 variant="danger"
                 onClick={() => handleDelete(item.product._id, item.quantity)}
@@ -74,7 +73,10 @@ function Cart() {
               </Button>
             </span>
           </div>
-        ))}
+        ))
+      ) : (
+        <p>No hay productos en el carrito todavía.</p>
+      )}
       <p>Total del carrito: {totalPrice}€</p>
       <Link to={`/cart/checkout/${cartDetails._id}`}>
         <Button>Realizar pedido</Button>
