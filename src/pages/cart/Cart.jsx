@@ -37,7 +37,15 @@ function Cart() {
       setCartItems(response.data.cart.items);
       setIsLoading(false);
     } catch (error) {
-      redirect("/error");
+      if (error.response && error.response.status === 404) {
+        // El carrito aún no existe, establecer datos vacíos
+        setCartItems([]);
+        setCartDetails(null);
+        setIsLoading(false);
+      } else {
+        // Otro error, redirigir a la página de error
+        redirect("/error");
+      }
     }
   };
 
@@ -45,7 +53,6 @@ function Cart() {
     try {
       await service.delete(`/cart/products/${productId}`);
       getData();
-
       console.log("Product removed from cart");
     } catch (error) {
       redirect("/error");
@@ -55,6 +62,7 @@ function Cart() {
   if (isLoading) {
     return <h3>Loading...</h3>;
   }
+
   return (
     <div>
       {cartItems && cartItems.length > 0 ? (
@@ -78,9 +86,11 @@ function Cart() {
         <p>No hay productos en el carrito todavía.</p>
       )}
       <p>Total del carrito: {totalPrice}€</p>
-      <Link to={`/cart/checkout/${cartDetails._id}`}>
-        <Button>Realizar pedido</Button>
-      </Link>
+      {cartDetails && cartItems.length > 0 && (
+        <Link to={`/cart/checkout/${cartDetails._id}`}>
+          <Button>Realizar pedido</Button>
+        </Link>
+      )}
     </div>
   );
 }
