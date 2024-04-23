@@ -27,6 +27,8 @@ import Navbar from "./components/Navbar";
 import IsPrivate from "./components/IsPrivate";
 import Cart from "./pages/cart/Cart";
 import Checkout from "./pages/cart/Checkout";
+import AllOrders from "./pages/orders/AllOrders";
+import OrderDetails from "./pages/orders/OrderDetails";
 
 function App() {
   return (
@@ -47,6 +49,11 @@ function App() {
               <ProfileEdit />
             </IsPrivate>
           }
+        />
+        <Route path="/profile/:userId/orders" element={<AllOrders />} />
+        <Route
+          path="/profile/:userId/orders/:orderId"
+          element={<OrderDetails />}
         />
 
         <Route path="/cart" element={<Cart />} />

@@ -26,7 +26,7 @@ function Profile() {
       console.log(response.data);
       setUserData(response.data);
 
-      const storesResponse = await service.get(`/store/user/${params.userId}`);
+      const storesResponse = await service.get(`/store/${params.userId}`);
       console.log(storesResponse.data);
       setStores(storesResponse.data);
 
@@ -76,6 +76,21 @@ function Profile() {
               style={{ backgroundColor: "#fdb14d" }}
             >
               Edit profile
+            </Button>
+          </Link>
+        )}
+
+        <br />
+        <br />
+
+        {loggedUser?._id === params.userId && (
+          <Link to={`/profile/${params.userId}/orders`}>
+            <Button
+              variant="light"
+              type="submit"
+              style={{ backgroundColor: "#fdb14d" }}
+            >
+              Orders
             </Button>
           </Link>
         )}
