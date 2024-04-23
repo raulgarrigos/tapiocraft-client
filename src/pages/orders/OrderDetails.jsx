@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../services/config";
+import { Button } from "react-bootstrap";
 
 function OrderDetails() {
   const [orderDetails, setOrderDetails] = useState(null);
@@ -24,6 +25,16 @@ function OrderDetails() {
       console.log(response.data);
       setOrderDetails(response.data);
       setIsLoading(false);
+    } catch (error) {
+      redirect("/error");
+    }
+  };
+
+  const handleDelete = async (orderId) => {
+    try {
+      await service.put(`/orders/${params.userId}/${params.orderId}`);
+      getData();
+      console.log("Order cancelled");
     } catch (error) {
       redirect("/error");
     }
@@ -72,10 +83,9 @@ function OrderDetails() {
             <p>Correo electrónico: {orderDetails.user.email}</p>
             <p>Dirección de envío: {orderDetails.shippingAddress}</p>
           </div>
-
-          <ul>
-            <li>{orderDetails.products._id}</li>
-          </ul>
+          <Button variant="danger" onClick={() => handleDelete()}>
+            Cancelar pedido
+          </Button>
         </div>
       )}
     </div>
