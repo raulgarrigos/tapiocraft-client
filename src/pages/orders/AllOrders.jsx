@@ -36,7 +36,7 @@ function Orders() {
             <br />
             <p>
               Pedido Nº:{" "}
-              <Link to={`/profile/${params.userId}}/orders/${order._id}`}>
+              <Link to={`/profile/${params.userId}/orders/${order._id}`}>
                 {order._id}
               </Link>
             </p>
