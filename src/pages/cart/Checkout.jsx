@@ -35,8 +35,7 @@ function Checkout() {
     e.preventDefault();
     try {
       await service.post(`/checkout/${params.cartId}`, checkoutData);
-      // !redirigir a una página de orders
-      redirect(`/`);
+      redirect(`/profile/${loggedUser._id}/orders`);
       console.log("Order placed");
     } catch (error) {
       redirect("/error");
