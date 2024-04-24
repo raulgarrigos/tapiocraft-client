@@ -83,9 +83,11 @@ function OrderDetails() {
             <p>Correo electrónico: {orderDetails.user.email}</p>
             <p>Dirección de envío: {orderDetails.shippingAddress}</p>
           </div>
-          <Button variant="danger" onClick={() => handleDelete()}>
-            Cancelar pedido
-          </Button>
+          {orderDetails.status !== "cancelled" && (
+            <Button variant="danger" onClick={() => handleDelete()}>
+              Cancelar pedido
+            </Button>
+          )}
         </div>
       )}
     </div>
