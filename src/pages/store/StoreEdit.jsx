@@ -29,7 +29,7 @@ function StoreEdit() {
 
   const getData = async () => {
     try {
-      const response = await service.get(`/store/${params.storeId}`);
+      const response = await service.get(`/store/${params.storeId}/details`);
       setStoreData(response.data);
       setIsLoading(false);
     } catch (error) {

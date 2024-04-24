@@ -26,7 +26,9 @@ function ProductDetails() {
       console.log("Producto", productResponse.data);
       setProductDetails(productResponse.data);
 
-      const storeReponse = await service.get(`/store/${params.storeId}`);
+      const storeReponse = await service.get(
+        `/store/${params.storeId}/details`
+      );
       console.log("Tienda", storeReponse.data);
       setStoreDetails(storeReponse.data);
 

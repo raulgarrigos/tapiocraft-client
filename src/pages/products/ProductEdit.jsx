@@ -35,7 +35,9 @@ function ProductEdit() {
       );
       setProductData(productResponse.data);
 
-      const storeResponse = await service.get(`/store/${params.storeId}`);
+      const storeResponse = await service.get(
+        `/store/${params.storeId}/details`
+      );
       setStoreData(storeResponse.data);
 
       setIsLoading(false);
