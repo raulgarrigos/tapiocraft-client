@@ -22,7 +22,7 @@ function StoreDetails() {
 
   const getData = async () => {
     try {
-      const response = await service.get(`/store/${params.storeId}`);
+      const response = await service.get(`/store/${params.storeId}/details`);
       console.log(response.data);
       setStoreDetails(response.data);
 
