@@ -29,6 +29,7 @@ import Cart from "./pages/cart/Cart";
 import Checkout from "./pages/cart/Checkout";
 import AllOrders from "./pages/orders/AllOrders";
 import OrderDetails from "./pages/orders/OrderDetails";
+import AddProductImage from "./pages/products/AddProductImage";
 
 function App() {
   return (
@@ -70,6 +71,10 @@ function App() {
         <Route
           path="/store/:storeId/:productId/edit"
           element={<ProductEdit />}
+        />
+        <Route
+          path="/store/:storeId/:productId/image"
+          element={<AddProductImage />}
         />
 
         <Route path="/error" element={<Error />} />

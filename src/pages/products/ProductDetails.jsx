@@ -85,6 +85,16 @@ function ProductDetails() {
               Editar producto
             </Button>
           </Link>
+
+          <Link to={`/store/${params.storeId}/${productDetails._id}/image`}>
+            <Button
+              variant="light"
+              type="submit"
+              style={{ backgroundColor: "#fdb14d" }}
+            >
+              Add image
+            </Button>
+          </Link>
         </div>
       )}
     </div>

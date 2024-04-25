@@ -8,10 +8,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 
-function ProductEdit() {
+function AddProductImage() {
   const [productData, setProductData] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]);
   const [storeData, setStoreData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
 
   const redirect = useNavigate();
   const params = useParams();
@@ -22,6 +24,29 @@ function ProductEdit() {
     const clone = JSON.parse(JSON.stringify(productData));
     clone[e.target.name] = e.target.value;
     setProductData(clone);
+  };
+
+  const handleFileUpload = async (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      return;
+    }
+    setIsUploading(true);
+
+    const uploadData = new FormData();
+    for (const file of e.target.files) {
+      uploadData.append("images", file);
+    }
+
+    try {
+      const response = await service.patch(
+        `/store/${storeData._id}/products/${productData._id}/image`,
+        uploadData
+      );
+      setImageUrls(response.data.imageUrls);
+      setIsUploading(false);
+    } catch (error) {
+      redirect("/error");
+    }
   };
 
   useEffect(() => {
@@ -60,18 +85,6 @@ function ProductEdit() {
     }
   };
 
-  const handleDelete = async () => {
-    try {
-      await service.delete(
-        `/store/${params.storeId}/products/${params.productId}`
-      );
-      redirect(`/store/${params.storeId}`);
-      console.log("Product deleted");
-    } catch (error) {
-      redirect("/error");
-    }
-  };
-
   if (isLoading) {
     return <h3>Loading...</h3>;
   }
@@ -90,48 +103,30 @@ function ProductEdit() {
     <div>
       {isOwner && (
         <>
-          <h3>Update your product: </h3>
+          <h3>Add your image: </h3>
           <Container className="text-center" style={containerStyle}>
             <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formProductName">
-                <Form.Label>Product name:</Form.Label>
+              {imageUrls.map((imageUrl, index) => (
+                <img
+                  key={index}
+                  src={imageUrl}
+                  alt={`Imagen ${index}`}
+                  width={200}
+                />
+              ))}
+
+              <Form.Group controlId="formImage">
+                <Form.Label>Image:</Form.Label>
                 <Form.Control
-                  type="text"
-                  name="name"
-                  onChange={handleInputChange}
-                  defaultValue={productData.name}
+                  type="file"
+                  name="image"
+                  onChange={handleFileUpload}
+                  disabled={isUploading}
                 />
               </Form.Group>
 
-              <Form.Group controlId="formProductDescription">
-                <Form.Label>Product description:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="description"
-                  onChange={handleInputChange}
-                  defaultValue={productData.description}
-                />
-              </Form.Group>
+              {isUploading ? <h3>... uploading image</h3> : null}
 
-              <Form.Group controlId="formProductPrice">
-                <Form.Label>Product price:</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="price"
-                  onChange={handleInputChange}
-                  defaultValue={productData.price}
-                />
-              </Form.Group>
-
-              <Form.Group controlId="formProductstock">
-                <Form.Label>Product stock:</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="stock"
-                  onChange={handleInputChange}
-                  defaultValue={productData.stock}
-                />
-              </Form.Group>
               <br />
 
               {storeData.owner === loggedUser._id && (
@@ -140,25 +135,11 @@ function ProductEdit() {
                   type="submit"
                   style={{ backgroundColor: "#fdb14d" }}
                 >
-                  Confirm changes
+                  Add
                 </Button>
               )}
+              <br />
             </Form>
-            <br />
-            {storeData.owner === loggedUser._id && (
-              <Button variant="danger" type="submit" onClick={handleDelete}>
-                Delete product
-              </Button>
-            )}
-
-            <br />
-            {storeData.owner === loggedUser._id && (
-              <Link to={`/store/${params.storeId}/${params.productId}`}>
-                <Button variant="primary" type="submit">
-                  Back
-                </Button>
-              </Link>
-            )}
           </Container>
         </>
       )}
@@ -186,4 +167,4 @@ function ProductEdit() {
   );
 }
 
-export default ProductEdit;
+export default AddProductImage;
