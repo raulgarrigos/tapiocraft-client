@@ -15,7 +15,7 @@ function Orders() {
 
   const getData = async () => {
     try {
-      const response = await service.get(`/orders/${params.userId}`);
+      const response = await service.get(`/orders/${params.userId}/list`);
       console.log(response.data);
       setAllOrders(response.data);
       setIsLoading(false);

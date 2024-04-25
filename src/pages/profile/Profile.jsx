@@ -22,11 +22,11 @@ function Profile() {
 
   const getData = async () => {
     try {
-      const response = await service.get(`/profile/${params.userId}`);
+      const response = await service.get(`/profile/${params.userId}/details`);
       console.log(response.data);
       setUserData(response.data);
 
-      const storesResponse = await service.get(`/store/${params.userId}`);
+      const storesResponse = await service.get(`/store/${params.userId}/list`);
       console.log(storesResponse.data);
       setStores(storesResponse.data);
 

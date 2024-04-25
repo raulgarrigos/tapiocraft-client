@@ -40,7 +40,7 @@ function StoreEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await service.put(`/store/${params.storeId}`, storeData);
+      await service.put(`/store/${params.storeId}/edit`, storeData);
       redirect(`/store/${params.storeId}`);
       console.log("Store updated");
     } catch (error) {
@@ -50,7 +50,7 @@ function StoreEdit() {
 
   const handleDelete = async () => {
     try {
-      await service.delete(`/store/${params.storeId}`);
+      await service.delete(`/store/${params.storeId}/delete`);
       redirect(`/profile/${loggedUser._id}`);
       console.log("Store deleted");
     } catch (error) {

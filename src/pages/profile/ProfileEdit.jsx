@@ -47,7 +47,7 @@ function ProfileEdit() {
 
   const getData = async () => {
     try {
-      const response = await service.get(`/profile/${loggedUser._id}`);
+      const response = await service.get(`/profile/${loggedUser._id}/details`);
       setUserData(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -59,7 +59,7 @@ function ProfileEdit() {
     e.preventDefault();
 
     try {
-      await service.put("/profile", userData);
+      await service.put(`/profile/${loggedUser._id}/update`, userData);
       redirect(`/profile/${loggedUser._id}`);
     } catch (error) {
       redirect("/error");

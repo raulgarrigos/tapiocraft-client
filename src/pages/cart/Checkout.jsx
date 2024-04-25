@@ -34,7 +34,7 @@ function Checkout() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await service.post(`/checkout/${params.cartId}`, checkoutData);
+      await service.post(`/checkout/${params.cartId}/order`, checkoutData);
       redirect(`/profile/${loggedUser._id}/orders`);
       console.log("Order placed");
     } catch (error) {
