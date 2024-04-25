@@ -10,8 +10,10 @@ import Container from "react-bootstrap/Container";
 
 function ProductEdit() {
   const [productData, setProductData] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   const [storeData, setStoreData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
 
   const redirect = useNavigate();
   const params = useParams();
@@ -22,6 +24,27 @@ function ProductEdit() {
     const clone = JSON.parse(JSON.stringify(productData));
     clone[e.target.name] = e.target.value;
     setProductData(clone);
+  };
+
+  const handleFileUpload = async (e) => {
+    if (!e.target.files[0]) {
+      return;
+    }
+    setIsUploading(true);
+
+    const uploadData = new FormData();
+    uploadData.append("image", e.target.files[0]);
+
+    try {
+      const response = await service.patch(
+        `/store/${storeData._id}/products/${productData._id}/image`,
+        uploadData
+      );
+      setImageUrl(response.data.imageUrl);
+      setIsUploading(false);
+    } catch (error) {
+      redirect("/error");
+    }
   };
 
   useEffect(() => {
@@ -132,6 +155,28 @@ function ProductEdit() {
                   defaultValue={productData.stock}
                 />
               </Form.Group>
+
+              <br />
+
+              <img
+                src={imageUrl ? imageUrl : productData.images}
+                alt={productData.picture}
+                width={200}
+              />
+
+              <Form.Group controlId="formImage">
+                <Form.Label>Image:</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="image"
+                  onChange={handleFileUpload}
+                  disabled={isUploading}
+                />
+              </Form.Group>
+
+              {isUploading ? <h3>... uploading image</h3> : null}
+
+              <br />
 
               {storeData.owner === loggedUser._id && (
                 <Button

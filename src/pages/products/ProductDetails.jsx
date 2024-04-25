@@ -59,7 +59,12 @@ function ProductDetails() {
       <p>{productDetails.description}</p>
       <p>{productDetails.price}€</p>
       <p>{productDetails.stock} unidad/es</p>
-      <p>{productDetails.images}</p>
+
+      <img
+        src={productDetails.images}
+        alt={productDetails.images}
+        width={200}
+      />
 
       {loggedUser && loggedUser._id !== storeDetails?.owner ? (
         productDetails.stock > 0 ? (
