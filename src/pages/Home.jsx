@@ -30,11 +30,27 @@ function Home() {
     <div>
       {allProducts.map((product) => (
         <div key={product._id} className="product-card">
-          <Link to={`/store/${product.store}/${product._id}`}>
+          <Link
+            to={`/store/${product.store}/${product._id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             <h3>{product.name}</h3>
+            <p>Precio: {product.price}€</p>
+
+            {product.images && product.images.length > 0 ? (
+              <img
+                src={product.images[0]}
+                alt={`Image ${product.images[0]}`}
+                width={200}
+              />
+            ) : (
+              <img
+                src="/public/images/image_1024.png"
+                alt="Imagen default"
+                width={200}
+              />
+            )}
           </Link>
-          <p>Precio: {product.price}€</p>
-          {/* Aquí puedes agregar la imagen del producto */}
         </div>
       ))}
     </div>

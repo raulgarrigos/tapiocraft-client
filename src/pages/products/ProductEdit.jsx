@@ -10,7 +10,7 @@ import Container from "react-bootstrap/Container";
 
 function ProductEdit() {
   const [productData, setProductData] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]);
   const [storeData, setStoreData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isUploading, setIsUploading] = useState(false);
@@ -27,20 +27,22 @@ function ProductEdit() {
   };
 
   const handleFileUpload = async (e) => {
-    if (!e.target.files[0]) {
+    if (!e.target.files || e.target.files.length === 0) {
       return;
     }
     setIsUploading(true);
 
     const uploadData = new FormData();
-    uploadData.append("image", e.target.files[0]);
+    for (const file of e.target.files) {
+      uploadData.append("images", file);
+    }
 
     try {
       const response = await service.patch(
         `/store/${storeData._id}/products/${productData._id}/image`,
         uploadData
       );
-      setImageUrl(response.data.imageUrl);
+      setImageUrls(response.data.imageUrls);
       setIsUploading(false);
     } catch (error) {
       redirect("/error");
@@ -158,11 +160,14 @@ function ProductEdit() {
 
               <br />
 
-              <img
-                src={imageUrl ? imageUrl : productData.images}
-                alt={productData.picture}
-                width={200}
-              />
+              {imageUrls.map((imageUrl, index) => (
+                <img
+                  key={index}
+                  src={imageUrl}
+                  alt={`Imagen ${index}`}
+                  width={200}
+                />
+              ))}
 
               <Form.Group controlId="formImage">
                 <Form.Label>Image:</Form.Label>
