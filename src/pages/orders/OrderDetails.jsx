@@ -30,7 +30,7 @@ function OrderDetails() {
     }
   };
 
-  const handleDelete = async (orderId) => {
+  const handleCancelOrder = async () => {
     try {
       await service.put(`/orders/${params.userId}/${params.orderId}`);
       getData();
@@ -84,7 +84,7 @@ function OrderDetails() {
             <p>Dirección de envío: {orderDetails.shippingAddress}</p>
           </div>
           {orderDetails.status !== "cancelled" && (
-            <Button variant="danger" onClick={() => handleDelete()}>
+            <Button variant="danger" onClick={() => handleCancelOrder()}>
               Cancelar pedido
             </Button>
           )}

@@ -48,6 +48,18 @@ function ProductDetails() {
     }
   };
 
+  const handleDeleteImage = async (imagePath) => {
+    try {
+      await service.delete(
+        `/store/${params.storeId}/products/${params.productId}/image`,
+        { data: { imagePath } }
+      );
+      getData();
+    } catch (error) {
+      redirect("/error");
+    }
+  };
+
   if (isLoading) {
     return <h3>Loading..</h3>;
   }
@@ -61,7 +73,16 @@ function ProductDetails() {
       <p>{productDetails.stock} unidad/es</p>
 
       {productDetails.images.map((image, index) => (
-        <img key={index} src={image} alt={`Imagen ${index}`} width={200} />
+        <div key={index}>
+          <img src={image} alt={`Imagen ${index}`} width={200} />
+          <Button
+            variant="light"
+            type="button"
+            onClick={() => handleDeleteImage(image)}
+          >
+            Eliminar imagen
+          </Button>
+        </div>
       ))}
 
       {loggedUser && loggedUser._id !== storeDetails?.owner ? (
@@ -93,6 +114,12 @@ function ProductDetails() {
               style={{ backgroundColor: "#fdb14d" }}
             >
               Add image
+            </Button>
+          </Link>
+
+          <Link to={`/store/${params.storeId}/`}>
+            <Button variant="primary" type="submit">
+              Back
             </Button>
           </Link>
         </div>
