@@ -34,7 +34,7 @@ function Home() {
             to={`/store/${product.store}/${product._id}`}
             style={{ textDecoration: "none", color: "inherit" }}
           >
-            <h3>{product.name}</h3>
+            <h3 className="text-3xl font-bold underline">{product.name}</h3>
             <p>Precio: {product.price}€</p>
 
             {product.images && product.images.length > 0 ? (

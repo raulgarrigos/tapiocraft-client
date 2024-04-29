@@ -2,16 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-// Bootstrap
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Button from "react-bootstrap/Button";
-
 function AppNavbar() {
   const { isLoggedIn, authenticateUser, loggedUser } = useContext(AuthContext);
-
   const redirect = useNavigate();
 
   const handleLogOut = () => {
@@ -20,33 +12,65 @@ function AppNavbar() {
     redirect("/");
   };
 
-  if (isLoggedIn) {
-    return (
-      <div className="Navbar">
-        <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/all-stores">Stores</Nav.Link>
-        <Nav.Link href={`/profile/${loggedUser._id}`}>Profile</Nav.Link>
-        <Nav.Link href="/cart">Carrito</Nav.Link>
-        <Button
-          variant="outline-danger"
-          size="sm"
-          style={{ marginLeft: "15px" }}
-          onClick={handleLogOut}
-        >
-          Log Out
-        </Button>
+  return (
+    <nav className="bg-gray-900 p-4">
+      <div className="container mx-auto flex justify-between items-center">
+        <a href="/" className="text-white font-bold text-2xl">
+          Tu Logo
+        </a>
+        <ul className="flex space-x-4">
+          <li>
+            <a href="/" className="text-white hover:text-gray-300">
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a href="/all-stores" className="text-white hover:text-gray-300">
+              Tiendas
+            </a>
+          </li>
+          {isLoggedIn ? (
+            <>
+              <li>
+                <a
+                  href={`/profile/${loggedUser._id}`}
+                  className="text-white hover:text-gray-300"
+                >
+                  Perfil
+                </a>
+              </li>
+              <li>
+                <a href="/cart" className="text-white hover:text-gray-300">
+                  Carrito
+                </a>
+              </li>
+              <li>
+                <button
+                  className="text-white hover:text-gray-300"
+                  onClick={handleLogOut}
+                >
+                  Cerrar Sesión
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <a href="/login" className="text-white hover:text-gray-300">
+                  Iniciar Sesión
+                </a>
+              </li>
+              <li>
+                <a href="/register" className="text-white hover:text-gray-300">
+                  Crear Cuenta
+                </a>
+              </li>
+            </>
+          )}
+        </ul>
       </div>
-    );
-  } else {
-    return (
-      <div className="Navbar">
-        <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/login">Login</Nav.Link>
-        <Nav.Link href="/register">Create Account</Nav.Link>
-        <Nav.Link href="/all-stores">Stores</Nav.Link>
-      </div>
-    );
-  }
+    </nav>
+  );
 }
 
 export default AppNavbar;
