@@ -79,85 +79,88 @@ function ProfileEdit() {
   };
 
   return (
-    <div>
-      <h3>Update your profile: </h3>
-      <Container className="text-center" style={containerStyle}>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formFirstName">
-            <Form.Label>First name:</Form.Label>
-            <Form.Control
-              type="text"
-              name="firstName"
-              onChange={handleInputChange}
-              defaultValue={userData.firstName}
-            />
-          </Form.Group>
+    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
+      <h3 className="text-xl font-semibold mb-4">Update your profile: </h3>
+      <div className="mb-4">
+        <label className="block text-gray-700">First name:</label>
+        <input
+          type="text"
+          name="firstName"
+          onChange={handleInputChange}
+          defaultValue={userData.firstName}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-          <Form.Group controlId="formLastName">
-            <Form.Label>Last name:</Form.Label>
-            <Form.Control
-              type="text"
-              name="lastName"
-              onChange={handleInputChange}
-              defaultValue={userData.lastName}
-            />
-          </Form.Group>
+      <div className="mb-4">
+        <label className="block text-gray-700">Last name:</label>
+        <input
+          type="text"
+          name="lastName"
+          onChange={handleInputChange}
+          defaultValue={userData.lastName}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-          <Form.Group controlId="formAddress">
-            <Form.Label>Address:</Form.Label>
-            <Form.Control
-              type="text"
-              name="address"
-              onChange={handleInputChange}
-              defaultValue={userData.address}
-            />
-          </Form.Group>
+      <div className="mb-4">
+        <label className="block text-gray-700">Address:</label>
+        <input
+          type="text"
+          name="address"
+          onChange={handleInputChange}
+          defaultValue={userData.address}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-          <Form.Group controlId="formPhoneNumber">
-            <Form.Label>Phone:</Form.Label>
-            <Form.Control
-              name="phoneNumber"
-              onChange={handleInputChange}
-              defaultValue={userData.phoneNumber}
-            />
-          </Form.Group>
+      <div className="mb-4">
+        <label className="block text-gray-700">Phone:</label>
+        <input
+          name="phoneNumber"
+          onChange={handleInputChange}
+          defaultValue={userData.phoneNumber}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-          <br />
+      <br />
 
-          <img
-            src={imageUrl ? imageUrl : userData.profilePicture}
-            alt={userData.username}
-            width={200}
-          />
+      <img
+        src={imageUrl ? imageUrl : userData.profilePicture}
+        alt={userData.username}
+        width={200}
+        className="rounded-full mx-auto mb-4"
+      />
 
-          <Form.Group controlId="formImage">
-            <Form.Label>Image:</Form.Label>
-            <Form.Control
-              type="file"
-              name="image"
-              onChange={handleFileUpload}
-              disabled={isUploading}
-            />
-          </Form.Group>
+      <div className="mb-4">
+        <label className="block text-gray-700">Image:</label>
+        <input
+          type="file"
+          name="image"
+          onChange={handleFileUpload}
+          disabled={isUploading}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-          {isUploading ? <h3>... uploading image</h3> : null}
+      {isUploading ? <p className="mb-4">... uploading image</p> : null}
 
-          <br />
+      <button
+        type="submit"
+        style={{ backgroundColor: "#fdb14d" }}
+        className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
+      >
+        Confirm changes
+      </button>
 
-          <Button
-            variant="light"
-            type="submit"
-            style={{ backgroundColor: "#fdb14d" }}
-          >
-            Confirm changes
-          </Button>
-          <br />
-          <br />
-          <Link to={`/profile/${userData._id}`}>
-            <Button variant="danger">Back</Button>
-          </Link>
-        </Form>
-      </Container>
+      <br />
+      <br />
+      <Link to={`/profile/${userData._id}`}>
+        <button className="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
+          Back
+        </button>
+      </Link>
     </div>
   );
 }
