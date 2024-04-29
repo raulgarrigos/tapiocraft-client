@@ -106,18 +106,21 @@ function ProductDetails() {
         <div className="mt-4">
           <Link
             to={`/store/${params.storeId}/${productDetails._id}/edit`}
-            className="mr-2"
+            className="mr-2 inline-block bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-lg"
           >
-            <Button variant="secondary">Edit Product</Button>
+            <button className="focus:outline-none">Edit Product</button>
           </Link>
           <Link
             to={`/store/${params.storeId}/${productDetails._id}/image`}
-            className="mr-2"
+            className="mr-2 inline-block bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg"
           >
-            <Button variant="secondary">Add Image</Button>
+            <button className="focus:outline-none">Add Image</button>
           </Link>
-          <Link to={`/store/${params.storeId}`}>
-            <Button variant="primary">Back</Button>
+          <Link
+            to={`/store/${params.storeId}`}
+            className="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg"
+          >
+            <button className="focus:outline-none">Back</button>
           </Link>
         </div>
       )}
