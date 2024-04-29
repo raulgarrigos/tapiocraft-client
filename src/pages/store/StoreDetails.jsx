@@ -50,9 +50,9 @@ function StoreDetails() {
         <div className="bg-white rounded-lg shadow-md p-6 flex-1">
           {storeDetails && (
             <div key={storeDetails._id}>
-              <p className="text-lg font-semibold mb-2">{storeDetails.name}</p>
-              <p className="text-gray-700 mb-2">{storeDetails.description}</p>
-              <p className="text-gray-700 mb-2">{storeDetails.category}</p>
+              <p className="text-3xl font-bold">{storeDetails.name}</p>
+              <p className="text-gray-700 my-4">{storeDetails.description}</p>
+              <p className="text-gray-700 my-4">{storeDetails.category}</p>
             </div>
           )}
 
@@ -80,15 +80,18 @@ function StoreDetails() {
         </div>
 
         <div className="bg-white rounded-lg shadow-md p-6 flex-1">
-          <h2 className="text-lg font-semibold mb-4">Productos</h2>
+          <h2 className="text-3xl font-bold">Productos</h2>
           {products.map((product) => (
-            <div key={product._id} className="mb-4">
+            <div
+              key={product._id}
+              className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200 hover:border-indigo-600 my-4"
+            >
               <Link
                 to={`/store/${params.storeId}/${product._id}`}
-                className="text-indigo-600 hover:text-indigo-800"
+                className="text-2xl font-semibold text-indigo-600 hover:text-indigo-800"
               >
-                <p className="text-lg mb-2">
-                  {product.name}, {product.price}€
+                <p>
+                  {product.name} | {product.price}€
                 </p>
               </Link>
             </div>
