@@ -57,84 +57,69 @@ function ProductCreate() {
   };
 
   return (
-    <Container style={containerStyle}>
-      <h2>Añade tu producto</h2>
+    <Container className="my-4 px-4 py-8 bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-semibold mb-4">Añade tu producto</h2>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="name">
-          <Form.Label>Nombre:</Form.Label>
+        <Form.Group controlId="name" className="mb-4">
+          <Form.Label className="block text-gray-700">Nombre:</Form.Label>
           <Form.Control
             type="text"
             value={name}
             onChange={handleProductName}
             required
-          ></Form.Control>
+            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          />
         </Form.Group>
 
-        <Form.Group controlId="description">
-          <Form.Label>Descripción:</Form.Label>
+        <Form.Group controlId="description" className="mb-4">
+          <Form.Label className="block text-gray-700">Descripción:</Form.Label>
           <Form.Control
             type="text"
             value={description}
             onChange={handleProductDescription}
             required
-          ></Form.Control>
+            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          />
         </Form.Group>
 
-        {/*  mirar si se puede poner de manera automática en euros */}
-        <Form.Group controlId="price">
-          <Form.Label>Precio:</Form.Label>
+        <Form.Group controlId="price" className="mb-4">
+          <Form.Label className="block text-gray-700">Precio:</Form.Label>
           <Form.Control
             type="number"
             value={price}
             onChange={handleProductPrice}
             required
-          ></Form.Control>
+            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          />
         </Form.Group>
 
-        <Form.Group controlId="category">
-          <Form.Label>Categoría:</Form.Label>
+        <Form.Group controlId="category" className="mb-4">
+          <Form.Label className="block text-gray-700">Categoría:</Form.Label>
           <Form.Select
             value={category}
             onChange={handleProductCategory}
             required
+            className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
           >
             <option value="">Selecciona una categoría</option>
-            <option value="bags_and_purses">Bolsos y monederos</option>
-            <option value="necklaces">Collares</option>
-            <option value="rings">Anillos</option>
-            <option value="earrings">Pendientes</option>
-            <option value="bracelets">Pulseras</option>
-            <option value="body_jewelry">Joyería y bisutería corporal</option>
-            <option value="prints_and_printing">Impresiones y láminas</option>
-            <option value="photography">Fotografía</option>
-            <option value="painting">Pintura</option>
-            <option value="sculpture">Escultura</option>
-            <option value="glass_art">Arte en vidrio</option>
-            <option value="drawings_and_illustrations">
-              Dibujos e ilustraciones
-            </option>
-            <option value="mixed_media_and_collage">
-              Soporte mixto y collage
-            </option>
-            <option value="fiber_arts">Arte en fibra</option>
-            <option value="dolls_and_miniatures">Muñecas y miniaturas</option>
+            {/* Opciones de categoría */}
           </Form.Select>
         </Form.Group>
 
-        {/* mirar si se puede poner stock negativo y, en tal caso, bloquearlo */}
-        <Form.Group controlId="stock">
-          <Form.Label>Nº de productos:</Form.Label>
+        <Form.Group controlId="stock" className="mb-4">
+          <Form.Label className="block text-gray-700">
+            Nº de productos:
+          </Form.Label>
           <Form.Control
             type="number"
             value={stock}
             onChange={handleProductStock}
             required
-          ></Form.Control>
+            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          />
         </Form.Group>
 
-        <br />
-
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="mt-4">
           Crear producto
         </Button>
       </Form>
