@@ -28,36 +28,39 @@ function Home() {
   }
   return (
     <div className="container mx-auto mt-8">
-      {" "}
-      {/* Agregamos la clase mt-8 para añadir margen en la parte superior */}
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {allProducts.map((product) => (
-          <div
+          <Link
             key={product._id}
-            className="bg-white rounded-lg shadow-md p-4 transition duration-300 ease-in-out transform hover:scale-105"
+            to={`/store/${product.store}/${product._id}`}
+            className="text-gray-800 hover:text-indigo-600"
           >
-            <Link
-              to={`/store/${product.store}/${product._id}`}
-              className="text-gray-800 hover:text-indigo-600"
-            >
-              <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-              <p className="text-sm text-gray-600">Precio: {product.price}€</p>
-
+            <div className="bg-white rounded-lg shadow-md p-4 transition duration-300 ease-in-out transform hover:scale-105 hover:border border-indigo-600">
+              <h3 className="text-lg font-semibold mb-2 text-indigo-600">
+                {product.name}
+              </h3>
+              <span className="text-lg font-semibold text-gray-700">
+                {product.price}€
+              </span>
               {product.images && product.images.length > 0 ? (
-                <img
-                  src={product.images[0]}
-                  alt={`Image ${product.images[0]}`}
-                  className="mt-2 w-full rounded-md"
-                />
+                <div className="mt-2 w-full h-40 max-w-full mx-auto rounded-md overflow-hidden">
+                  <img
+                    src={product.images[0]}
+                    alt={`Image ${product.images[0]}`}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
               ) : (
-                <img
-                  src="/public/images/image_1024.png"
-                  alt="Imagen default"
-                  className="mt-2 w-full rounded-md"
-                />
+                <div className="mt-2 w-full h-40 max-w-full mx-auto rounded-md overflow-hidden">
+                  <img
+                    src="/public/images/image_1024.png"
+                    alt="Imagen default"
+                    className="object-contain w-full h-full"
+                  />
+                </div>
               )}
-            </Link>
-          </div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

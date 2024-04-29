@@ -30,10 +30,13 @@ function AllStores() {
     <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       {allStores.map((store) => {
         return (
-          <div key={store._id} className="mb-4 p-4 bg-gray-100 rounded-lg">
+          <div
+            key={store._id}
+            className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200 hover:border-indigo-600"
+          >
             <Link
               to={`/store/${store._id}`}
-              className="text-xl font-semibold hover:text-indigo-600"
+              className="text-2xl font-semibold text-indigo-600 hover:text-indigo-800"
             >
               <h3>{store.name}</h3>
             </Link>
