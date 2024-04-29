@@ -27,14 +27,17 @@ function AllStores() {
     return <h3>Loading...</h3>;
   }
   return (
-    <div>
+    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       {allStores.map((store) => {
         return (
-          <div key={store._id}>
-            <Link to={`/store/${store._id}`}>
+          <div key={store._id} className="mb-4 p-4 bg-gray-100 rounded-lg">
+            <Link
+              to={`/store/${store._id}`}
+              className="text-xl font-semibold hover:text-indigo-600"
+            >
               <h3>{store.name}</h3>
             </Link>
-            <p>{store.category}</p>
+            <p className="text-gray-700">{store.description}</p>
           </div>
         );
       })}
