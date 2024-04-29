@@ -41,83 +41,90 @@ function Profile() {
   }
 
   return (
-    <div className="profile-container">
-      <div className="profile-content">
-        <h4>{userData.username}</h4>
-        <img
-          src={userData.profilePicture}
-          alt={userData.username}
-          width={200}
-        />
-        {userData.firstName && userData.lastName && (
-          <p>
-            {userData.firstName} {userData.lastName}
-          </p>
-        )}
-        {userData.firstName && !userData.lastName && (
-          <p>{userData.firstName}</p>
-        )}
-        {!userData.firstName && userData.lastName && <p>{userData.lastName}</p>}
+    <div className="flex justify-center items-start h-screen p-8">
+      <div className="profile-container w-1/2 mr-4 bg-white rounded-lg shadow-md p-4">
+        <div className="profile-content">
+          <h1 className="text-3xl font-bold">{userData.username}</h1>
+          <div className="flex justify-center my-4">
+            <img
+              src={userData.profilePicture}
+              alt={userData.username}
+              width={200}
+              className="rounded-full"
+            />
+          </div>
+          {userData.firstName && userData.lastName && (
+            <p>
+              {userData.firstName} {userData.lastName}
+            </p>
+          )}
+          {userData.firstName && !userData.lastName && (
+            <p>{userData.firstName}</p>
+          )}
+          {!userData.firstName && userData.lastName && (
+            <p>{userData.lastName}</p>
+          )}
 
-        {userData.address && (
-          <p>
-            <strong>Address:</strong> {userData.address}
-          </p>
-        )}
+          {userData.address && (
+            <p>
+              <strong>Address:</strong> {userData.address}
+            </p>
+          )}
 
-        {userData.phoneNumber && <p>{userData.phoneNumber}</p>}
+          {userData.phoneNumber && (
+            <p>
+              <strong>Contact: </strong>
+              {userData.phoneNumber}
+            </p>
+          )}
 
-        <br />
-        {loggedUser?._id === params.userId && (
-          <Link to={"/profile/edit"}>
-            <Button
-              variant="light"
-              type="submit"
-              style={{ backgroundColor: "#fdb14d" }}
+          <br />
+          {loggedUser?._id === params.userId && (
+            <Link to={"/profile/edit"} className="inline-block mr-2">
+              <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded">
+                Edit profile
+              </button>
+            </Link>
+          )}
+
+          {loggedUser?._id === params.userId && (
+            <Link
+              to={`/profile/${params.userId}/orders`}
+              className="inline-block mr-2"
             >
-              Edit profile
-            </Button>
-          </Link>
-        )}
+              <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded">
+                Orders
+              </button>
+            </Link>
+          )}
+        </div>
+      </div>
 
-        <br />
-        <br />
-
-        {loggedUser?._id === params.userId && (
-          <Link to={`/profile/${params.userId}/orders`}>
-            <Button
-              variant="light"
-              type="submit"
-              style={{ backgroundColor: "#fdb14d" }}
-            >
-              Orders
-            </Button>
-          </Link>
-        )}
-
-        <br />
-        <br />
+      <div className="stores-container w-1/2 bg-white rounded-lg shadow-md p-4">
+        <h1 className="text-3xl font-bold">
+          Tiendas creadas por {userData.username}:
+        </h1>
+        <ul>
+          {stores.map((store) => (
+            <div className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200 hover:border-indigo-600 my-4">
+              <Link
+                key={store._id}
+                to={`/store/${store._id}`}
+                className="text-2xl font-semibold text-indigo-600 hover:text-indigo-800"
+              >
+                <p>{store.name}</p>
+              </Link>
+            </div>
+          ))}
+        </ul>
 
         {loggedUser?._id === params.userId && (
           <Link to={"/store/create"}>
-            <Button
-              variant="light"
-              type="submit"
-              style={{ backgroundColor: "#fdb14d" }}
-            >
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4">
               Create store
-            </Button>
+            </button>
           </Link>
         )}
-
-        <h5>Tiendas creadas por {userData.username}:</h5>
-        <ul>
-          {stores.map((store) => (
-            <Link key={store._id} to={`/store/${store._id}`}>
-              <p>{store.name}</p>
-            </Link>
-          ))}
-        </ul>
       </div>
     </div>
   );
