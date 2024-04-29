@@ -23,14 +23,12 @@ function ProductDetails() {
       const productResponse = await service.get(
         `/store/${params.storeId}/products/${params.productId}`
       );
-      console.log("Producto", productResponse.data);
       setProductDetails(productResponse.data);
 
-      const storeReponse = await service.get(
+      const storeResponse = await service.get(
         `/store/${params.storeId}/details`
       );
-      console.log("Tienda", storeReponse.data);
-      setStoreDetails(storeReponse.data);
+      setStoreDetails(storeResponse.data);
 
       setIsLoading(false);
     } catch (error) {
@@ -41,7 +39,6 @@ function ProductDetails() {
   const addToCart = async () => {
     try {
       await service.post(`/cart/products/${params.productId}`);
-      console.log("Product added to cart");
       redirect("/cart");
     } catch (error) {
       redirect("/error");
@@ -65,66 +62,61 @@ function ProductDetails() {
   }
 
   return (
-    <div>
-      <h4>Product Details</h4>
-      <p>{productDetails.name}</p>
-      <p>{productDetails.description}</p>
-      <p>{productDetails.price}€</p>
-      <p>{productDetails.stock} unidad/es</p>
+    <div className="container mx-auto px-4 py-8">
+      <h2 className="text-2xl font-semibold mb-4 text-left">
+        {productDetails.name}
+      </h2>
+      <p className="text-lg mb-4 text-left">{productDetails.description}</p>
+      <p className="text-lg mb-4 text-left">Price: {productDetails.price}€</p>
+      <p className="text-lg mb-4 text-left">
+        Stock: {productDetails.stock} unit/s
+      </p>
 
-      {productDetails.images.map((image, index) => (
-        <div key={index}>
-          <img src={image} alt={`Imagen ${index}`} width={200} />
-          <Button
-            variant="light"
-            type="button"
-            onClick={() => handleDeleteImage(image)}
-          >
-            Eliminar imagen
-          </Button>
-        </div>
-      ))}
+      <div className="flex flex-wrap gap-4 mb-8">
+        {productDetails.images.map((image, index) => (
+          <div key={index} className="relative w-40">
+            <img
+              src={image}
+              alt={`Image ${index}`}
+              className="w-full rounded"
+            />
+            {loggedUser && loggedUser._id === storeDetails?.owner && (
+              <button
+                className="absolute top-0 right-0 p-1 bg-red-500 text-white rounded text-sm"
+                onClick={() => handleDeleteImage(image)}
+              >
+                Delete
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
 
-      {loggedUser && loggedUser._id !== storeDetails?.owner ? (
-        productDetails.stock > 0 ? (
-          <Button variant="light" type="submit" onClick={addToCart}>
-            Añadir al carrito
-          </Button>
-        ) : (
-          <h3>We're out of stock!</h3>
-        )
-      ) : null}
+      {loggedUser && loggedUser._id !== storeDetails?.owner && (
+        <Button
+          variant="primary"
+          onClick={addToCart}
+          disabled={productDetails.stock === 0}
+        >
+          Add to Cart
+        </Button>
+      )}
 
       {loggedUser && loggedUser._id === storeDetails?.owner && (
-        <div>
+        <div className="mt-4">
           <Link to={`/store/${params.storeId}/${productDetails._id}/edit`}>
-            <Button
-              variant="light"
-              type="submit"
-              style={{ backgroundColor: "#fdb14d" }}
-            >
-              Editar producto
-            </Button>
+            <Button variant="secondary">Edit Product</Button>
           </Link>
-
           <Link to={`/store/${params.storeId}/${productDetails._id}/image`}>
-            <Button
-              variant="light"
-              type="submit"
-              style={{ backgroundColor: "#fdb14d" }}
-            >
-              Add image
-            </Button>
+            <Button variant="secondary">Add Image</Button>
           </Link>
-
-          <Link to={`/store/${params.storeId}/`}>
-            <Button variant="primary" type="submit">
-              Back
-            </Button>
+          <Link to={`/store/${params.storeId}`}>
+            <Button variant="primary">Back</Button>
           </Link>
         </div>
       )}
     </div>
   );
 }
+
 export default ProductDetails;
