@@ -100,66 +100,69 @@ function AddProductImage() {
   };
 
   return (
-    <div>
+    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       {isOwner && (
         <>
-          <h3>Add your image: </h3>
-          <Container className="text-center" style={containerStyle}>
-            <Form onSubmit={handleSubmit}>
-              {imageUrls.map((imageUrl, index) => (
-                <img
-                  key={index}
-                  src={imageUrl}
-                  alt={`Imagen ${index}`}
-                  width={200}
-                />
-              ))}
+          <h3 className="text-xl font-semibold mb-4">Add your image:</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="block text-gray-700">Image:</label>
+              <input
+                type="file"
+                name="image"
+                onChange={handleFileUpload}
+                disabled={isUploading}
+                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              />
+            </div>
 
-              <Form.Group controlId="formImage">
-                <Form.Label>Image:</Form.Label>
-                <Form.Control
-                  type="file"
-                  name="image"
-                  onChange={handleFileUpload}
-                  disabled={isUploading}
-                />
-              </Form.Group>
+            {isUploading ? <h3>... uploading image</h3> : null}
 
-              {isUploading ? <h3>... uploading image</h3> : null}
-
-              <br />
-
+            <div className="mb-4">
               {storeData.owner === loggedUser._id && (
-                <Button
-                  variant="light"
-                  type="submit"
-                  style={{ backgroundColor: "#fdb14d" }}
-                >
-                  Add
-                </Button>
+                <div>
+                  <button
+                    type="submit"
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded mr-2"
+                  >
+                    Add
+                  </button>
+
+                  <Link to={`/store/${params.storeId}/${params.productId}`}>
+                    <button
+                      type="button"
+                      className="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+                    >
+                      Back
+                    </button>
+                  </Link>
+                </div>
               )}
-              <br />
-            </Form>
-          </Container>
+            </div>
+          </form>
         </>
       )}
+
       {loggedUser && !isOwner && (
         <div>
-          <h3>
+          <h3 className="text-xl">
             You're not supposed to be here. Go back and edit your own product!
           </h3>
-          <br />
           <Link to={`/store/${params.storeId}`}>
-            <Button variant="danger">Back</Button>
+            <button className="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
+              Back
+            </button>
           </Link>
         </div>
       )}
+
       {!loggedUser && (
         <div>
-          <h3>Please log in to edit your own product.</h3>
-          <br />
+          <h3 className="text-xl">Please log in to edit your own product.</h3>
           <Link to="/login">
-            <Button variant="primary">Log In</Button>
+            <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+              Log In
+            </button>
           </Link>
         </div>
       )}

@@ -78,107 +78,112 @@ function ProductEdit() {
 
   const isOwner = storeData && loggedUser && storeData.owner === loggedUser._id;
 
-  // Styles
-  const containerStyle = {
-    maxWidth: "600px",
-    backgroundColor: "grey",
-    padding: "20px",
-    borderRadius: "8px",
-  };
-
   return (
-    <div>
+    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       {isOwner && (
         <>
-          <h3>Update your product: </h3>
-          <Container className="text-center" style={containerStyle}>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formProductName">
-                <Form.Label>Product name:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  onChange={handleInputChange}
-                  defaultValue={productData.name}
-                />
-              </Form.Group>
+          <h3 className="text-xl font-semibold mb-4">Update your product:</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="block text-gray-700">Product name:</label>
+              <input
+                type="text"
+                name="name"
+                onChange={handleInputChange}
+                defaultValue={productData.name}
+                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              />
+            </div>
 
-              <Form.Group controlId="formProductDescription">
-                <Form.Label>Product description:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="description"
-                  onChange={handleInputChange}
-                  defaultValue={productData.description}
-                />
-              </Form.Group>
+            <div className="mb-4">
+              <label className="block text-gray-700">
+                Product description:
+              </label>
+              <textarea
+                name="description"
+                onChange={handleInputChange}
+                defaultValue={productData.description}
+                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              />
+            </div>
 
-              <Form.Group controlId="formProductPrice">
-                <Form.Label>Product price:</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="price"
-                  onChange={handleInputChange}
-                  defaultValue={productData.price}
-                />
-              </Form.Group>
+            <div className="mb-4">
+              <label className="block text-gray-700">Product price:</label>
+              <input
+                type="number"
+                name="price"
+                onChange={handleInputChange}
+                defaultValue={productData.price}
+                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              />
+            </div>
 
-              <Form.Group controlId="formProductstock">
-                <Form.Label>Product stock:</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="stock"
-                  onChange={handleInputChange}
-                  defaultValue={productData.stock}
-                />
-              </Form.Group>
-              <br />
+            <div className="mb-4">
+              <label className="block text-gray-700">Product stock:</label>
+              <input
+                type="number"
+                name="stock"
+                onChange={handleInputChange}
+                defaultValue={productData.stock}
+                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              />
+            </div>
 
+            <div className="mb-4">
               {storeData.owner === loggedUser._id && (
-                <Button
-                  variant="light"
+                <button
                   type="submit"
-                  style={{ backgroundColor: "#fdb14d" }}
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
                 >
                   Confirm changes
-                </Button>
+                </button>
               )}
-            </Form>
-            <br />
-            {storeData.owner === loggedUser._id && (
-              <Button variant="danger" type="submit" onClick={handleDelete}>
-                Delete product
-              </Button>
-            )}
 
-            <br />
-            {storeData.owner === loggedUser._id && (
-              <Link to={`/store/${params.storeId}/${params.productId}`}>
-                <Button variant="primary" type="submit">
-                  Back
-                </Button>
-              </Link>
-            )}
-          </Container>
+              {storeData.owner === loggedUser._id && (
+                <button
+                  type="button"
+                  onClick={handleDelete}
+                  className="ml-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
+                >
+                  Delete product
+                </button>
+              )}
+
+              {storeData.owner === loggedUser._id && (
+                <Link to={`/store/${params.storeId}/${params.productId}`}>
+                  <button
+                    type="button"
+                    className="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+                  >
+                    Back
+                  </button>
+                </Link>
+              )}
+            </div>
+          </form>
         </>
       )}
+
       {loggedUser && !isOwner && (
         <div>
-          <h3>
+          <h3 className="text-xl">
             You're not supposed to be here. Go back and edit your own product!
           </h3>
-          <br />
           <Link to={`/store/${params.storeId}`}>
-            <Button variant="danger">Back</Button>
+            <button className="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
+              Back
+            </button>
           </Link>
         </div>
       )}
+
       {!loggedUser && (
         <div>
-          <h3>Please log in to edit your own product.</h3>
-          <br />
+          <h3 className="text-xl">Please log in to edit your own product.</h3>
           <Link to="/login">
-            <Button variant="primary">Log In</Button>
+            <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+              Log In
+            </button>
           </Link>
         </div>
       )}

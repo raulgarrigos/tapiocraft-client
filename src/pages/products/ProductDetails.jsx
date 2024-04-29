@@ -104,10 +104,16 @@ function ProductDetails() {
 
       {loggedUser && loggedUser._id === storeDetails?.owner && (
         <div className="mt-4">
-          <Link to={`/store/${params.storeId}/${productDetails._id}/edit`}>
+          <Link
+            to={`/store/${params.storeId}/${productDetails._id}/edit`}
+            className="mr-2"
+          >
             <Button variant="secondary">Edit Product</Button>
           </Link>
-          <Link to={`/store/${params.storeId}/${productDetails._id}/image`}>
+          <Link
+            to={`/store/${params.storeId}/${productDetails._id}/image`}
+            className="mr-2"
+          >
             <Button variant="secondary">Add Image</Button>
           </Link>
           <Link to={`/store/${params.storeId}`}>
