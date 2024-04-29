@@ -73,104 +73,107 @@ function StoreEdit() {
   };
 
   return (
-    <div>
+    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       {isOwner && (
         <>
-          <h3>Update your store: </h3>
-          <Container className="text-center" style={containerStyle}>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formStoreName">
-                <Form.Label>Store name:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  onChange={handleInputChange}
-                  defaultValue={storeData.name}
-                />
-              </Form.Group>
+          <h3 className="text-xl font-semibold mb-4">Update your store:</h3>
+          <div className="mb-4">
+            <label className="block text-gray-700">Store name:</label>
+            <input
+              type="text"
+              name="name"
+              onChange={handleInputChange}
+              defaultValue={storeData.name}
+              className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            />
+          </div>
 
-              <Form.Group controlId="formStoreDescription">
-                <Form.Label>Store description:</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="description"
-                  onChange={handleInputChange}
-                  defaultValue={storeData.description}
-                />
-              </Form.Group>
+          <div className="mb-4">
+            <label className="block text-gray-700">Store description:</label>
+            <textarea
+              name="description"
+              onChange={handleInputChange}
+              defaultValue={storeData.description}
+              className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            />
+          </div>
 
-              <Form.Group controlId="formStoreCategory">
-                <Form.Label>Store category:</Form.Label>
-                <Form.Select
-                  name="category"
-                  onChange={handleInputChange}
-                  defaultValue={storeData.category}
-                >
-                  <option value="">Selecciona una categoría</option>
-                  <option value="Bolsos y monederos">Bolsos y monederos</option>
-                  <option value="Collares">Collares</option>
-                  <option value="Anillos">Anillos</option>
-                  <option value="Pendientes">Pendientes</option>
-                  <option value="Pulseras">Pulseras</option>
-                  <option value="Joyería y bisutería corporal">
-                    Joyería y bisutería corporal
-                  </option>
-                  <option value="Impresiones y láminas">
-                    Impresiones y láminas
-                  </option>
-                  <option value="Fotografía">Fotografía</option>
-                  <option value="Pintura">Pintura</option>
-                  <option value="Escultura">Escultura</option>
-                  <option value="Arte en vidrio">Arte en vidrio</option>
-                  <option value="Dibujos e ilustraciones">
-                    Dibujos e ilustraciones
-                  </option>
-                  <option value="Soporte mixto y collage">
-                    Soporte mixto y collage
-                  </option>
-                  <option value="Arte en fibra">Arte en fibra</option>
-                  <option value="Muñecas y miniaturas">
-                    Muñecas y miniaturas
-                  </option>
-                </Form.Select>
-              </Form.Group>
+          <div className="mb-4">
+            <label className="block text-gray-700">Store category:</label>
+            <select
+              name="category"
+              onChange={handleInputChange}
+              defaultValue={storeData.category}
+              className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            >
+              <option value="">Selecciona una categoría</option>
+              <option value="Bolsos y monederos">Bolsos y monederos</option>
+              <option value="Collares">Collares</option>
+              <option value="Anillos">Anillos</option>
+              <option value="Pendientes">Pendientes</option>
+              <option value="Pulseras">Pulseras</option>
+              <option value="Joyería y bisutería corporal">
+                Joyería y bisutería corporal
+              </option>
+              <option value="Impresiones y láminas">
+                Impresiones y láminas
+              </option>
+              <option value="Fotografía">Fotografía</option>
+              <option value="Pintura">Pintura</option>
+              <option value="Escultura">Escultura</option>
+              <option value="Arte en vidrio">Arte en vidrio</option>
+              <option value="Dibujos e ilustraciones">
+                Dibujos e ilustraciones
+              </option>
+              <option value="Soporte mixto y collage">
+                Soporte mixto y collage
+              </option>
+              <option value="Arte en fibra">Arte en fibra</option>
+              <option value="Muñecas y miniaturas">Muñecas y miniaturas</option>
+            </select>
+          </div>
 
-              {storeData.owner === loggedUser._id && (
-                <Button
-                  variant="light"
-                  type="submit"
-                  style={{ backgroundColor: "#fdb14d" }}
-                >
-                  Confirm changes
-                </Button>
-              )}
-            </Form>
-            <br />
-            {storeData.owner === loggedUser._id && (
-              <Button variant="danger" type="submit" onClick={handleDelete}>
-                Delete store
-              </Button>
-            )}
-          </Container>
+          {storeData.owner === loggedUser._id && (
+            <button
+              type="submit"
+              className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
+            >
+              Confirm changes
+            </button>
+          )}
+
+          {storeData.owner === loggedUser._id && (
+            <button
+              type="button"
+              onClick={handleDelete}
+              className="ml-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
+            >
+              Delete store
+            </button>
+          )}
         </>
       )}
+
       {loggedUser && !isOwner && (
         <div>
-          <h3>
+          <h3 className="text-xl">
             You're not supposed to be here. Go back and edit your own store!
           </h3>
-          <br />
           <Link to={`/store/${params.storeId}`}>
-            <Button variant="danger">Back</Button>
+            <button className="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
+              Back
+            </button>
           </Link>
         </div>
       )}
+
       {!loggedUser && (
         <div>
-          <h3>Please log in to edit your own store.</h3>
-          <br />
+          <h3 className="text-xl">Please log in to edit your own store.</h3>
           <Link to="/login">
-            <Button variant="primary">Log In</Button>
+            <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+              Log In
+            </button>
           </Link>
         </div>
       )}
