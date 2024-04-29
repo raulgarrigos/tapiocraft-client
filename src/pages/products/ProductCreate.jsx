@@ -102,7 +102,27 @@ function ProductCreate() {
             className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
           >
             <option value="">Selecciona una categoría</option>
-            {/* Opciones de categoría */}
+            <option value="bolsos_y_monederos">Bolsos y monederos</option>
+            <option value="collares">Collares</option>
+            <option value="anillos">Anillos</option>
+            <option value="pendientes">Pendientes</option>
+            <option value="pulseras">Pulseras</option>
+            <option value="joyeria_y_bisuteria_corporal">
+              Joyería y bisutería corporal
+            </option>
+            <option value="impresiones_y_laminas">Impresiones y láminas</option>
+            <option value="fotografia">Fotografía</option>
+            <option value="pintura">Pintura</option>
+            <option value="escultura">Escultura</option>
+            <option value="arte_en_vidrio">Arte en vidrio</option>
+            <option value="dibujos_e_ilustraciones">
+              Dibujos e ilustraciones
+            </option>
+            <option value="soporte_mixto_y_collage">
+              Soporte mixto y collage
+            </option>
+            <option value="arte_en_fibra">Arte en fibra</option>
+            <option value="munecas_y_miniaturas">Muñecas y miniaturas</option>
           </Form.Select>
         </Form.Group>
 

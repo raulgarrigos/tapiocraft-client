@@ -45,44 +45,57 @@ function StoreDetails() {
   // ! AGREGAR CONDICIONAL IF DE ADDRESS, REFUNDPOLICY
 
   return (
-    <div>
-      {storeDetails && (
-        <div key={storeDetails._id}>
-          <p>Nombre: {storeDetails.name}</p>
-          <p>Descripción de la tienda: {storeDetails.description}</p>
-          <p>Categoría: {storeDetails.category}</p>
-        </div>
-      )}
+    <div className="container mx-auto mt-8">
+      <div className="flex  lg:flex-row gap-8">
+        <div className="bg-white rounded-lg shadow-md p-6 flex-1">
+          {storeDetails && (
+            <div key={storeDetails._id}>
+              <p className="text-lg font-semibold mb-2">{storeDetails.name}</p>
+              <p className="text-gray-700 mb-2">{storeDetails.description}</p>
+              <p className="text-gray-700 mb-2">{storeDetails.category}</p>
+            </div>
+          )}
 
-      {products.map((product) => (
-        <div key={product._id}>
-          <Link to={`/store/${params.storeId}/${product._id}`}>
-            <p>
-              {product.name}, {product.price}€
-            </p>
-          </Link>
-        </div>
-      ))}
+          {loggedUser?._id === storeDetails?.owner && (
+            <div className="mt-4">
+              <Link to={`/store/${storeDetails._id}/edit`}>
+                <Button
+                  variant="light"
+                  type="submit"
+                  style={{ backgroundColor: "#fdb14d" }}
+                >
+                  Edit store
+                </Button>
+              </Link>
 
-      {loggedUser?._id === storeDetails?.owner && (
-        <div>
-          <Link to={`/store/${storeDetails._id}/edit`}>
-            <Button
-              variant="light"
-              type="submit"
-              style={{ backgroundColor: "#fdb14d" }}
-            >
-              Edit store
-            </Button>
-          </Link>
-
-          <Link to={`/store/${storeDetails._id}/add-product`}>
-            <Button type="submit" style={{ backgroundColor: "violet" }}>
-              Add a product
-            </Button>
-          </Link>
+              <Link
+                to={`/store/${storeDetails._id}/add-product`}
+                className="ml-2"
+              >
+                <Button type="submit" style={{ backgroundColor: "violet" }}>
+                  Add a product
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
-      )}
+
+        <div className="bg-white rounded-lg shadow-md p-6 flex-1">
+          <h2 className="text-lg font-semibold mb-4">Productos</h2>
+          {products.map((product) => (
+            <div key={product._id} className="mb-4">
+              <Link
+                to={`/store/${params.storeId}/${product._id}`}
+                className="text-indigo-600 hover:text-indigo-800"
+              >
+                <p className="text-lg mb-2">
+                  {product.name}, {product.price}€
+                </p>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
