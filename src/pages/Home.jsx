@@ -27,32 +27,39 @@ function Home() {
     return <h3>Loading...</h3>;
   }
   return (
-    <div>
-      {allProducts.map((product) => (
-        <div key={product._id} className="product-card">
-          <Link
-            to={`/store/${product.store}/${product._id}`}
-            style={{ textDecoration: "none", color: "inherit" }}
+    <div className="container mx-auto mt-8">
+      {" "}
+      {/* Agregamos la clase mt-8 para añadir margen en la parte superior */}
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {allProducts.map((product) => (
+          <div
+            key={product._id}
+            className="bg-white rounded-lg shadow-md p-4 transition duration-300 ease-in-out transform hover:scale-105"
           >
-            <h3 className="text-3xl font-bold underline">{product.name}</h3>
-            <p>Precio: {product.price}€</p>
+            <Link
+              to={`/store/${product.store}/${product._id}`}
+              className="text-gray-800 hover:text-indigo-600"
+            >
+              <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
+              <p className="text-sm text-gray-600">Precio: {product.price}€</p>
 
-            {product.images && product.images.length > 0 ? (
-              <img
-                src={product.images[0]}
-                alt={`Image ${product.images[0]}`}
-                width={200}
-              />
-            ) : (
-              <img
-                src="/public/images/image_1024.png"
-                alt="Imagen default"
-                width={200}
-              />
-            )}
-          </Link>
-        </div>
-      ))}
+              {product.images && product.images.length > 0 ? (
+                <img
+                  src={product.images[0]}
+                  alt={`Image ${product.images[0]}`}
+                  className="mt-2 w-full rounded-md"
+                />
+              ) : (
+                <img
+                  src="/public/images/image_1024.png"
+                  alt="Imagen default"
+                  className="mt-2 w-full rounded-md"
+                />
+              )}
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
