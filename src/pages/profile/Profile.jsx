@@ -3,9 +3,6 @@ import { AuthContext } from "../../context/auth.context";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import service from "../../services/config";
 
-// Bootstrap
-import Button from "react-bootstrap/Button";
-
 function Profile() {
   const [userData, setUserData] = useState(null);
   const [stores, setStores] = useState([]);

@@ -77,9 +77,8 @@ function Login() {
       <br />
 
       <p className="text-gray-800">
-        Are you still not registered yet?
+        Are you not registered yet?{" "}
         <Link to={"/register"} className="text-blue-500 hover:text-blue-700">
-          {" "}
           Click here!
         </Link>
       </p>

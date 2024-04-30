@@ -59,14 +59,6 @@ function StoreEdit() {
 
   const isOwner = storeData && loggedUser && storeData.owner === loggedUser._id;
 
-  // Styles
-  const containerStyle = {
-    maxWidth: "600px",
-    backgroundColor: "grey",
-    padding: "20px",
-    borderRadius: "8px",
-  };
-
   return (
     <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       {isOwner && (
@@ -132,6 +124,7 @@ function StoreEdit() {
             <button
               type="submit"
               className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
+              onClick={handleSubmit}
             >
               Confirm changes
             </button>

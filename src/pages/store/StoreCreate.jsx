@@ -49,61 +49,73 @@ function StoreCreate() {
   };
 
   return (
-    <Container style={containerStyle}>
-      <h2>Crea tu tienda</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="name">
-          <Form.Label>Nombre:</Form.Label>
-          <Form.Control
-            type="text"
-            value={name}
-            onChange={handleStoreName}
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="description">
-          <Form.Label>Descripción:</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            value={description}
-            onChange={handleStoreDescription}
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="category">
-          <Form.Label>Categoría:</Form.Label>
-          <Form.Select value={category} onChange={handleStoreCategory} required>
-            <option value="">Selecciona una categoría</option>
-            <option value="bags_and_purses">Bolsos y monederos</option>
-            <option value="necklaces">Collares</option>
-            <option value="rings">Anillos</option>
-            <option value="earrings">Pendientes</option>
-            <option value="bracelets">Pulseras</option>
-            <option value="body_jewelry">Joyería y bisutería corporal</option>
-            <option value="prints_and_printing">Impresiones y láminas</option>
-            <option value="photography">Fotografía</option>
-            <option value="painting">Pintura</option>
-            <option value="sculpture">Escultura</option>
-            <option value="glass_art">Arte en vidrio</option>
-            <option value="drawings_and_illustrations">
-              Dibujos e ilustraciones
-            </option>
-            <option value="mixed_media_and_collage">
-              Soporte mixto y collage
-            </option>
-            <option value="fiber_arts">Arte en fibra</option>
-            <option value="dolls_and_miniatures">Muñecas y miniaturas</option>
-          </Form.Select>
-        </Form.Group>
+    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
+      <h3 className="text-xl font-semibold mb-4">Create your store:</h3>
+      <div className="mb-4">
+        <label className="block text-gray-700">Store name:</label>
+        <input
+          type="text"
+          name="name"
+          onChange={handleStoreName}
+          defaultValue={name}
+          required
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-        <br />
+      <div className="mb-4">
+        <label className="block text-gray-700">Description:</label>
+        <input
+          as="textarea"
+          rows={3}
+          value={description}
+          onChange={handleStoreDescription}
+          required
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-        <Button variant="primary" type="submit">
-          Crear Tienda
-        </Button>
-      </Form>
-    </Container>
+      <div className="mb-4">
+        <label className="block text-gray-700">Category:</label>
+        <select
+          value={category}
+          onChange={handleStoreCategory}
+          required
+          className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        >
+          <option value="">Selecciona una categoría</option>
+          <option value="bags_and_purses">Bolsos y monederos</option>
+          <option value="necklaces">Collares</option>
+          <option value="rings">Anillos</option>
+          <option value="earrings">Pendientes</option>
+          <option value="bracelets">Pulseras</option>
+          <option value="body_jewelry">Joyería y bisutería corporal</option>
+          <option value="prints_and_printing">Impresiones y láminas</option>
+          <option value="photography">Fotografía</option>
+          <option value="painting">Pintura</option>
+          <option value="sculpture">Escultura</option>
+          <option value="glass_art">Arte en vidrio</option>
+          <option value="drawings_and_illustrations">
+            Dibujos e ilustraciones
+          </option>
+          <option value="mixed_media_and_collage">
+            Soporte mixto y collage
+          </option>
+          <option value="fiber_arts">Arte en fibra</option>
+          <option value="dolls_and_miniatures">Muñecas y miniaturas</option>
+        </select>
+      </div>
+
+      <br />
+
+      <button
+        type="submit"
+        className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
+        onClick={handleSubmit}
+      >
+        Confirm changes
+      </button>
+    </div>
   );
 }
 
