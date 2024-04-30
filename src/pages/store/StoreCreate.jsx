@@ -40,14 +40,6 @@ function StoreCreate() {
     }
   };
 
-  //Styles
-  const containerStyle = {
-    maxWidth: "600px",
-    backgroundColor: "grey",
-    padding: "20px",
-    borderRadius: "8px",
-  };
-
   return (
     <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       <h3 className="text-xl font-semibold mb-4">Create your store:</h3>

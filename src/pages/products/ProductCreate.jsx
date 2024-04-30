@@ -48,14 +48,6 @@ function ProductCreate() {
     }
   };
 
-  //Styles
-  const containerStyle = {
-    maxWidth: "600px",
-    backgroundColor: "grey",
-    padding: "20px",
-    borderRadius: "8px",
-  };
-
   return (
     <Container className="my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Añade tu producto</h2>
