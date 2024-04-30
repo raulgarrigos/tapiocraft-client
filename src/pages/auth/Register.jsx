@@ -72,86 +72,73 @@ function Register() {
     }
   };
 
-  // Styles
-  const containerStyle = {
-    maxWidth: "600px",
-    backgroundColor: "grey",
-    padding: "20px",
-    borderRadius: "8px",
-  };
-
   return (
-    <div>
-      <h1>Create your account</h1>
-      <br />
+    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
+      <h3 className="text-xl font-semibold mb-4">Create your account</h3>
+      <div className="mb-4">
+        <label className="block text-gray-700">Username:</label>
+        <input
+          type="text"
+          name="firstName"
+          onChange={handleUsernameChange}
+          defaultValue={username}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-      <Container className="text-center" style={containerStyle}>
-        <Form onSubmit={handleSignup}>
-          <Form.Group controlId="formUsername">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              name="username"
-              value={username}
-              onChange={handleUsernameChange}
-            />
-          </Form.Group>
+      <div className="mb-4">
+        <label className="block text-gray-700">Email:</label>
+        <input
+          type="email"
+          name="email"
+          onChange={handleEmailChange}
+          defaultValue={email}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-          <Form.Group controlId="formEmail">
-            <Form.Label>E-mail</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </Form.Group>
+      <div className="mb-4">
+        <label className="block text-gray-700">Password:</label>
+        <input
+          type="password"
+          name="password"
+          onChange={handlePasswordChange}
+          defaultValue={password}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-          <Form.Group controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </Form.Group>
+      <div className="mb-4">
+        <label className="block text-gray-700">Confirm password:</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          onChange={handleConfirmPasswordChange}
+          defaultValue={confirmPassword}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-          <Form.Group controlId="formConfirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="confirmPassword"
-              value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
-            />
-          </Form.Group>
+      <div className="mb-4">
+        <label className="block text-gray-700">Date of Birth:</label>
+        <input
+          type="date"
+          value={dateOfBirth}
+          onChange={(e) => setDateOfBirth(e.target.value)}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
 
-          <br />
+      <button
+        type="submit"
+        style={{ backgroundColor: "#fdb14d" }}
+        className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
+        onClick={handleSignup}
+      >
+        Sign up
+      </button>
 
-          <Form.Group controlId="formDateOfBirth">
-            <Form.Label>Date of Birth</Form.Label>
-
-            <input
-              type="date"
-              value={dateOfBirth}
-              onChange={(e) => setDateOfBirth(e.target.value)}
-            />
-          </Form.Group>
-
-          <br />
-
-          <Button
-            variant="light"
-            type="submit"
-            style={{ backgroundColor: "#fdb14d" }}
-          >
-            Sign up
-          </Button>
-
-          <p style={{ color: "red" }}>{errorMessage}</p>
-        </Form>
-      </Container>
+      <p style={{ color: "red" }}>{errorMessage}</p>
     </div>
   );
 }

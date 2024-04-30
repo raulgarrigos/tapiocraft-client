@@ -70,14 +70,6 @@ function ProfileEdit() {
     return <h3>Loading...</h3>;
   }
 
-  // Styles
-  const containerStyle = {
-    maxWidth: "600px",
-    backgroundColor: "grey",
-    padding: "20px",
-    borderRadius: "8px",
-  };
-
   return (
     <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       <h3 className="text-xl font-semibold mb-4">Update your profile: </h3>
@@ -150,6 +142,7 @@ function ProfileEdit() {
         type="submit"
         style={{ backgroundColor: "#fdb14d" }}
         className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
+        onClick={handleSubmit}
       >
         Confirm changes
       </button>

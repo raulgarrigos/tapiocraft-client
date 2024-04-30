@@ -39,58 +39,51 @@ function Login() {
     }
   };
 
-  // Styles
-  const containerStyle = {
-    maxWidth: "600px",
-    backgroundColor: "grey",
-    padding: "20px",
-    borderRadius: "8px",
-  };
-
   return (
-    <div>
-      <h1>Log in</h1>
+    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
+      <h3 className="text-xl font-semibold mb-4">Log In </h3>
+      <div className="mb-4">
+        <label className="block text-gray-700">Username:</label>
+        <input
+          type="text"
+          name="firstName"
+          onChange={handleUsernameChange}
+          defaultValue={username}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="block text-gray-700">Password:</label>
+        <input
+          type="password"
+          name="password"
+          onChange={handlePasswordChange}
+          defaultValue={password}
+          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+        />
+      </div>
+
+      <button
+        type="submit"
+        style={{ backgroundColor: "#fdb14d" }}
+        className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
+        onClick={handleLogin}
+      >
+        Enter
+      </button>
+
       <br />
-      <Container className="text-center" style={containerStyle}>
-        <Form onSubmit={handleLogin}>
-          <Form.Group controlId="formUsername">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              name="username"
-              value={username}
-              onChange={handleUsernameChange}
-            />
-          </Form.Group>
+      <br />
 
-          <Form.Group controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-          </Form.Group>
-
-          <br />
-
-          <Button
-            variant="light"
-            type="submit"
-            style={{ backgroundColor: "#fdb14d" }}
-          >
-            Enter
-          </Button>
-          <br />
-          <br />
-          <p>
-            Are you still not registered yet?
-            <Link to={"/register"}>click here!</Link>
-          </p>
-          <p style={{ color: "red" }}>{errorMessage}</p>
-        </Form>
-      </Container>
+      <p className="text-gray-800">
+        Are you still not registered yet?
+        <Link to={"/register"} className="text-blue-500 hover:text-blue-700">
+          {" "}
+          Click here!
+        </Link>
+      </p>
+      <p style={{ color: "red" }}>{errorMessage}</p>
     </div>
   );
 }
