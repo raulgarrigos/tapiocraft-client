@@ -43,7 +43,6 @@ function Cart() {
         setCartDetails(null);
         setIsLoading(false);
       } else {
-        // Otro error, redirigir a la página de error
         redirect("/error");
       }
     }
@@ -64,33 +63,77 @@ function Cart() {
   }
 
   return (
-    <div>
-      {cartItems && cartItems.length > 0 ? (
-        cartItems.map((item) => (
-          <div key={item.product._id}>
-            <span>
-              <p>
-                {item.product.name} | {item.product.price}€ | Cantidad:{" "}
-                {item.quantity} | Total: {item.product.price * item.quantity}€
-              </p>
-              <Button
-                variant="danger"
-                onClick={() => handleDelete(item.product._id, item.quantity)}
-              >
-                Eliminar
-              </Button>
-            </span>
+    <div className="container mx-auto mt-8">
+      <div className="grid gap-4 grid-cols-1">
+        {cartItems && cartItems.length > 0 ? (
+          cartItems.map((item) => (
+            <div
+              key={item.product._id}
+              className="bg-white rounded-lg shadow-md p-4 transition duration-300 ease-in-out transform hover:scale-105 hover:border border-indigo-600 flex items-center"
+            >
+              <div className="mr-4">
+                {item.product.images && item.product.images.length > 0 ? (
+                  <div className="w-40 h-40 max-w-full mx-auto rounded-md overflow-hidden">
+                    <img
+                      src={item.product.images[0]}
+                      alt={`Image ${item.product.images[0]}`}
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-40 h-40 max-w-full mx-auto rounded-md overflow-hidden">
+                    <img
+                      src="/public/images/image_1024.png"
+                      alt="Imagen default"
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="flex-grow">
+                <p className="text-lg font-semibold mb-2 text-indigo-600">
+                  {item.product.name} | {item.product.price}€ | Cantidad:{" "}
+                  {item.quantity} | Total: {item.product.price * item.quantity}€
+                </p>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
+                  onClick={() => handleDelete(item.product._id, item.quantity)}
+                >
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="flex justify-center items-center h-screen">
+            <div className="bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-2 text-center">
+                No hay productos en el carrito todavía.
+              </h3>
+            </div>
           </div>
-        ))
-      ) : (
-        <p>No hay productos en el carrito todavía.</p>
-      )}
-      <p>Total del carrito: {totalPrice}€</p>
-      {cartDetails && cartItems.length > 0 && (
-        <Link to={`/cart/checkout/${cartDetails._id}`}>
-          <Button>Realizar pedido</Button>
-        </Link>
-      )}
+        )}
+      </div>
+      <div className="bg-white rounded-lg shadow-md p-4 transition duration-300 ease-in-out inline-block mt-2">
+        <p className="font-bold mx-1">Total del carrito: {totalPrice}€</p>
+      </div>
+      <div className="mt-2">
+        {cartDetails && cartItems.length > 0 && (
+          <Link to={`/cart/checkout/${cartDetails._id}`}>
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 my-2 rounded"
+            >
+              Realizar pedido
+            </button>
+          </Link>
+        )}
+      </div>
     </div>
   );
 }
