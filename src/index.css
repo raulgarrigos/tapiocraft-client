@@ -11,3 +11,41 @@ body {
 
   background-color: #f8f9fa;
 }
+
+@layer components {
+  .my-forms-container {
+    @apply container my-4 px-4 py-8 bg-white rounded-lg shadow-md;
+  }
+
+  .my-forms-title {
+    @apply text-xl font-semibold mb-4;
+  }
+
+  .my-forms-containerForm {
+    @apply mb-4;
+  }
+
+  .my-forms-label {
+    @apply block text-gray-700;
+  }
+
+  .my-forms-input {
+    @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500;
+  }
+
+  .my-forms-textarea {
+    @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500;
+  }
+
+  .my-forms-select {
+    @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500;
+  }
+
+  .my-forms-button {
+    @apply bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded my-4;
+  }
+
+  .my-forms-deleteButton {
+    @apply ml-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded;
+  }
+}

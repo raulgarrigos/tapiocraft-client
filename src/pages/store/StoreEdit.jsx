@@ -60,10 +60,10 @@ function StoreEdit() {
   const isOwner = storeData && loggedUser && storeData.owner === loggedUser._id;
 
   return (
-    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
+    <div className="my-forms-container">
       {isOwner && (
         <>
-          <h3 className="text-xl font-semibold mb-4">Update your store:</h3>
+          <h3 className="my-forms-title">Update your store:</h3>
           <div className="mb-4">
             <label className="block text-gray-700">Store name:</label>
             <input

@@ -46,73 +46,57 @@ function Checkout() {
     return <h3>Loading...</h3>;
   }
 
-  // Styles
-  const containerStyle = {
-    maxWidth: "600px",
-    backgroundColor: "grey",
-    padding: "20px",
-    borderRadius: "8px",
-  };
-
   return (
-    <div>
-      <h3>Confirm your order </h3>
-      <Container className="text-center" style={containerStyle}>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="formUserName">
-            <Form.Label>Name:</Form.Label>
-            <Form.Control
-              type="text"
-              name="name"
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+    <div className="my-forms-container">
+      <h3 className="my-forms-title">Confirm your order </h3>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Name:</label>
+        <input
+          type="name"
+          name="name"
+          onChange={handleInputChange}
+          className="my-forms-input"
+        />
+      </div>
 
-          <Form.Group controlId="formUserSurname">
-            <Form.Label>Surname:</Form.Label>
-            <Form.Control
-              type="text"
-              name="surname"
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+      <div className="containerForm">
+        <label className="label">Surname:</label>
+        <input
+          type="name"
+          name="surname"
+          onChange={handleInputChange}
+          className="my-forms-input"
+        />
+      </div>
 
-          <Form.Group controlId="formUserShippingAddress">
-            <Form.Label>Shipping Address:</Form.Label>
-            <Form.Control
-              type="text"
-              name="shippingAddress"
-              onChange={handleInputChange}
-            />
-          </Form.Group>
+      <div className="containerForm">
+        <label className="label">Shipping Address:</label>
+        <input
+          type="name"
+          name="shippingAddress"
+          onChange={handleInputChange}
+          className="my-forms-input"
+        />
+      </div>
 
-          <Form.Group controlId="formPaymentMethod">
-            <Form.Label>Payment Method:</Form.Label>
-            <Form.Control
-              as="select"
-              name="paymentMethod"
-              onChange={handleInputChange}
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Seleccionar método de pago
-              </option>
-              <option value="paypal">PayPal</option>
-              <option value="creditCard">Tarjeta de crédito/débito</option>
-            </Form.Control>
-          </Form.Group>
-
-          <Button
-            variant="light"
-            type="submit"
-            style={{ backgroundColor: "#fdb14d" }}
-          >
-            Confirm changes
-          </Button>
-
-          <br />
-        </Form>
-      </Container>
+      <div className="containerForm">
+        <label className="label">Payment Method:</label>
+        <select
+          name="paymentMethod"
+          defaultValue=""
+          onChange={handleInputChange}
+          className="my-forms-select"
+        >
+          <option value="" disabled>
+            Seleccionar método de pago
+          </option>
+          <option value="paypal">PayPal</option>
+          <option value="creditCard">Tarjeta de crédito/débito</option>
+        </select>
+      </div>
+      <button type="submit" className="my-forms-button" onClick={handleSubmit}>
+        Confirm order
+      </button>
     </div>
   );
 }
