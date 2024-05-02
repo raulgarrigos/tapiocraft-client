@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../services/config";
 import { Button } from "react-bootstrap";
@@ -79,19 +79,26 @@ function OrderDetails() {
             <h4 className="text-3xl font-bold my-2">Productos</h4>
             <div>
               {orderDetails.products.map((product) => (
-                <div key={product._id}>
-                  <p>Nombre: {product.product.name}</p>
-                  <p>Precio: {product.product.price}€</p>
-                  <p>Cantidad: {product.quantity}</p>
-                  {orderDetails.stores.map((store) => {
-                    return (
-                      <p key={store._id}>
-                        {product.product.store === store._id
-                          ? `Tienda: ${store.name}`
-                          : ""}
-                      </p>
-                    );
-                  })}
+                <div
+                  key={product._id}
+                  className=" my-4 px-4 py-8 bg-white rounded-lg shadow-md hover:scale-105 hover:border border-indigo-600"
+                >
+                  <Link
+                    to={`/store/${product.product.store}/${product.product._id}`}
+                  >
+                    <p>Nombre: {product.product.name}</p>
+                    <p>Precio: {product.product.price}€</p>
+                    <p>Cantidad: {product.quantity}</p>
+                    {orderDetails.stores.map((store) => {
+                      return (
+                        <p key={store._id}>
+                          {product.product.store === store._id
+                            ? `Tienda: ${store.name}`
+                            : ""}
+                        </p>
+                      );
+                    })}
+                  </Link>
                   <br />
                 </div>
               ))}
