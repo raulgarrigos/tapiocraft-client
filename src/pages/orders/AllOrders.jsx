@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import service from "../../services/config";
+import { all } from "axios";
 
 function Orders() {
   const [allOrders, setAllOrders] = useState(null);
@@ -29,20 +30,23 @@ function Orders() {
   }
 
   return (
-    <div>
-      {allOrders.map((order) => {
-        return (
-          <div key={order._id}>
-            <br />
-            <p>
-              Pedido Nº:{" "}
-              <Link to={`/profile/${params.userId}/orders/${order._id}`}>
-                {order._id}
-              </Link>
-            </p>
-          </div>
-        );
-      })}
+    <div className="my-forms-container">
+      <div className="grid gap-4 grid-cols-1">
+        <h3 className="my-forms-title">Orders</h3>
+        {allOrders.map((order) => {
+          return (
+            <Link to={`/profile/${params.userId}/orders/${order._id}`}>
+              <div
+                key={order._id}
+                className="bg-white rounded-lg shadow-md w-2/4 p-4 transition duration-300 ease-in-out transform hover:scale-105 hover:border border-indigo-600 mx-auto"
+              >
+                <p className="font-bold">Pedido Nº:</p>
+                <p className="text-indigo-600"> {order._id}</p>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }

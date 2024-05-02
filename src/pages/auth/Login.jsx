@@ -3,11 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import service from "../../services/config";
 import { AuthContext } from "../../context/auth.context";
 
-// Bootstrap
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
