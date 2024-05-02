@@ -49,6 +49,6 @@ body {
   }
 
   .my-forms-deleteButton {
-    @apply ml-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded;
+    @apply ml-2 bg-red-500 hover:bg-red-600 text-white font-semibold my-2 py-2 px-4 rounded;
   }
 }

@@ -44,50 +44,59 @@ function OrderDetails() {
     return <h3>Loading...</h3>;
   }
   return (
-    <div>
+    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
       {loggedUser && loggedUser._id === orderDetails?.user._id && (
         <div>
-          <h4>Pedido</h4>
-          <div>
-            <p>Nº de pedido: {orderDetails._id}</p>
-            <p>Estado del pedido: {orderDetails.status}</p>
-            <p>Precio total: {orderDetails.orderPrice}€</p>
+          <div className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200">
+            <h4 className="text-3xl font-bold my-2">Datos del pedido</h4>
+            <div>
+              <p>Nº: {orderDetails._id}</p>
+              <p>Estado del pedido: {orderDetails.status}</p>
+              <p>Precio total: {orderDetails.orderPrice}€</p>
+            </div>
           </div>
-          <h4>Productos</h4>
-          <div>
-            {orderDetails.products.map((product) => (
-              <div key={product._id}>
-                <p>Nombre: {product.product.name}</p>
-                <p>Precio: {product.product.price}€</p>
-                <p>Cantidad: {product.quantity}</p>
-                {orderDetails.stores.map((store) => {
-                  return (
-                    <p key={store._id}>
-                      {product.product.store === store._id
-                        ? `Tienda: ${store.name}`
-                        : ""}
-                    </p>
-                  );
-                })}
-                <br />
-              </div>
-            ))}
+          <div className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200">
+            <h4 className="text-3xl font-bold">Datos de contacto</h4>
+            <div>
+              <p>
+                Nombre: {orderDetails.name} {orderDetails.surname}
+              </p>
+              <p>Nº de teléfono: {orderDetails.user.phoneNumber}</p>
+              <p>Correo electrónico: {orderDetails.user.email}</p>
+              <p>Dirección de envío: {orderDetails.shippingAddress}</p>
+            </div>
+            {orderDetails.status !== "cancelled" && (
+              <button
+                type="button"
+                onClick={handleCancelOrder}
+                className="my-forms-deleteButton"
+              >
+                Cancel order
+              </button>
+            )}
           </div>
-
-          <h4> Datos de contacto</h4>
-          <div>
-            <p>
-              Nombre: {orderDetails.name} {orderDetails.surname}
-            </p>
-            <p>Nº de teléfono: {orderDetails.user.phoneNumber}</p>
-            <p>Correo electrónico: {orderDetails.user.email}</p>
-            <p>Dirección de envío: {orderDetails.shippingAddress}</p>
+          <div className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200">
+            <h4 className="text-3xl font-bold my-2">Productos</h4>
+            <div>
+              {orderDetails.products.map((product) => (
+                <div key={product._id}>
+                  <p>Nombre: {product.product.name}</p>
+                  <p>Precio: {product.product.price}€</p>
+                  <p>Cantidad: {product.quantity}</p>
+                  {orderDetails.stores.map((store) => {
+                    return (
+                      <p key={store._id}>
+                        {product.product.store === store._id
+                          ? `Tienda: ${store.name}`
+                          : ""}
+                      </p>
+                    );
+                  })}
+                  <br />
+                </div>
+              ))}
+            </div>
           </div>
-          {orderDetails.status !== "cancelled" && (
-            <Button variant="danger" onClick={() => handleCancelOrder()}>
-              Cancelar pedido
-            </Button>
-          )}
         </div>
       )}
     </div>

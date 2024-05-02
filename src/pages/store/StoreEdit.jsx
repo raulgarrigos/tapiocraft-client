@@ -134,7 +134,7 @@ function StoreEdit() {
             <button
               type="button"
               onClick={handleDelete}
-              className="ml-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
+              className="my-forms-deleteButton"
             >
               Delete store
             </button>
