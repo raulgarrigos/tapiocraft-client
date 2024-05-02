@@ -73,66 +73,66 @@ function Register() {
   };
 
   return (
-    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
-      <h3 className="text-xl font-semibold mb-4">Create your account</h3>
-      <div className="mb-4">
-        <label className="block text-gray-700">Username:</label>
+    <div className="my-forms-container">
+      <h3 className="my-forms-title">Create your account</h3>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Username:</label>
         <input
           type="text"
           name="firstName"
           onChange={handleUsernameChange}
           defaultValue={username}
-          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-input"
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">Email:</label>
+      <div className="containerForm">
+        <label className="my-forms-label">Email:</label>
         <input
           type="email"
           name="email"
           onChange={handleEmailChange}
           defaultValue={email}
-          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-input"
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">Password:</label>
+      <div className="containerForm">
+        <label className="my-forms-label">Password:</label>
         <input
           type="password"
           name="password"
           onChange={handlePasswordChange}
           defaultValue={password}
-          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-input"
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">Confirm password:</label>
+      <div className="containerForm">
+        <label className="my-forms-label">Confirm password:</label>
         <input
           type="password"
           name="confirmPassword"
           onChange={handleConfirmPasswordChange}
           defaultValue={confirmPassword}
-          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-input"
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">Date of Birth:</label>
+      <div className="containerForm">
+        <label className="my-forms-label">Date of Birth:</label>
         <input
           type="date"
           value={dateOfBirth}
           onChange={(e) => setDateOfBirth(e.target.value)}
-          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-input"
         />
       </div>
 
       <button
         type="submit"
         style={{ backgroundColor: "#fdb14d" }}
-        className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
+        className="my-forms-button"
         onClick={handleSignup}
       >
         Sign up

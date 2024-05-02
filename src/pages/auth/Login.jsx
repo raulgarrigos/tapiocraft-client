@@ -40,34 +40,34 @@ function Login() {
   };
 
   return (
-    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
-      <h3 className="text-xl font-semibold mb-4">Log In </h3>
-      <div className="mb-4">
-        <label className="block text-gray-700">Username:</label>
+    <div className="my-forms-container">
+      <h3 className="my-forms-title">Log In </h3>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Username:</label>
         <input
           type="text"
           name="firstName"
           onChange={handleUsernameChange}
           defaultValue={username}
-          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-input"
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">Password:</label>
+      <div className="containerForm">
+        <label className="my-forms-label">Password:</label>
         <input
           type="password"
           name="password"
           onChange={handlePasswordChange}
           defaultValue={password}
-          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-input"
         />
       </div>
 
       <button
         type="submit"
         style={{ backgroundColor: "#fdb14d" }}
-        className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
+        className="my-forms-button"
         onClick={handleLogin}
       >
         Enter

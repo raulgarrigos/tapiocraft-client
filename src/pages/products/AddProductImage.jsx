@@ -3,11 +3,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../services/config";
 
-// Bootstrap
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-
 function AddProductImage() {
   const [productData, setProductData] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
@@ -19,12 +14,6 @@ function AddProductImage() {
   const params = useParams();
 
   const { loggedUser } = useContext(AuthContext);
-
-  const handleInputChange = (e) => {
-    const clone = JSON.parse(JSON.stringify(productData));
-    clone[e.target.name] = e.target.value;
-    setProductData(clone);
-  };
 
   const handleFileUpload = async (e) => {
     if (!e.target.files || e.target.files.length === 0) {
@@ -91,48 +80,34 @@ function AddProductImage() {
 
   const isOwner = storeData && loggedUser && storeData.owner === loggedUser._id;
 
-  // Styles
-  const containerStyle = {
-    maxWidth: "600px",
-    backgroundColor: "grey",
-    padding: "20px",
-    borderRadius: "8px",
-  };
-
   return (
-    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
+    <div className="my-forms-container">
       {isOwner && (
         <>
-          <h3 className="text-xl font-semibold mb-4">Add your image:</h3>
+          <h3 className="my-forms-title">Add your image:</h3>
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label className="block text-gray-700">Image:</label>
+            <div className="my-forms-containerForm">
+              <label className="my-forms-label">Image:</label>
               <input
                 type="file"
                 name="image"
                 onChange={handleFileUpload}
                 disabled={isUploading}
-                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+                className="my-forms-input"
               />
             </div>
 
             {isUploading ? <h3>... uploading image</h3> : null}
 
-            <div className="mb-4">
+            <div className="my-forms-containerForm">
               {storeData.owner === loggedUser._id && (
                 <div>
-                  <button
-                    type="submit"
-                    className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded mr-2"
-                  >
+                  <button type="submit" className="my-forms-button">
                     Add
                   </button>
 
                   <Link to={`/store/${params.storeId}/${params.productId}`}>
-                    <button
-                      type="button"
-                      className="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-                    >
+                    <button type="button" className="back-btn">
                       Back
                     </button>
                   </Link>

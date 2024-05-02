@@ -3,11 +3,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../services/config";
 
-// Bootstrap
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-
 function ProductEdit() {
   const [productData, setProductData] = useState(null);
   const [storeData, setStoreData] = useState(null);
@@ -79,62 +74,57 @@ function ProductEdit() {
   const isOwner = storeData && loggedUser && storeData.owner === loggedUser._id;
 
   return (
-    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
+    <div className="my-forms-container">
       {isOwner && (
         <>
-          <h3 className="text-xl font-semibold mb-4">Update your product:</h3>
+          <h3 className="my-forms-title">Update your product:</h3>
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label className="block text-gray-700">Product name:</label>
+            <div className="my-forms-containerForm">
+              <label className="my-forms-label">Product name:</label>
               <input
                 type="text"
                 name="name"
                 onChange={handleInputChange}
                 defaultValue={productData.name}
-                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+                className="my-forms-input"
               />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-gray-700">
-                Product description:
-              </label>
+            <div className="my-forms-containerForm">
+              <label className="my-forms-label">Product description:</label>
               <textarea
                 name="description"
                 onChange={handleInputChange}
                 defaultValue={productData.description}
-                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+                className="my-forms-input"
               />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-gray-700">Product price:</label>
+            <div className="my-forms-containerForm">
+              <label className="my-forms-label">Product price:</label>
               <input
                 type="number"
                 name="price"
                 onChange={handleInputChange}
                 defaultValue={productData.price}
-                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+                className="my-forms-input"
               />
             </div>
 
-            <div className="mb-4">
-              <label className="block text-gray-700">Product stock:</label>
+            <div className="my-forms-containerForm">
+              <label className="my-forms-label">Product stock:</label>
               <input
                 type="number"
                 name="stock"
                 onChange={handleInputChange}
                 defaultValue={productData.stock}
-                className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+                className="my-forms-input"
               />
             </div>
 
-            <div className="mb-4">
+            <div className="my-forms-containerForm">
               {storeData.owner === loggedUser._id && (
-                <button
-                  type="submit"
-                  className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
-                >
+                <button type="submit" className="my-forms-button">
                   Confirm changes
                 </button>
               )}
@@ -143,7 +133,7 @@ function ProductEdit() {
                 <button
                   type="button"
                   onClick={handleDelete}
-                  className="ml-2 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
+                  className="my-forms-deleteButton"
                 >
                   Delete product
                 </button>
@@ -151,10 +141,7 @@ function ProductEdit() {
 
               {storeData.owner === loggedUser._id && (
                 <Link to={`/store/${params.storeId}/${params.productId}`}>
-                  <button
-                    type="button"
-                    className="ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-                  >
+                  <button type="button" className="back-btn">
                     Back
                   </button>
                 </Link>
@@ -170,9 +157,7 @@ function ProductEdit() {
             You're not supposed to be here. Go back and edit your own product!
           </h3>
           <Link to={`/store/${params.storeId}`}>
-            <button className="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded">
-              Back
-            </button>
+            <button className="back-btn">Back</button>
           </Link>
         </div>
       )}

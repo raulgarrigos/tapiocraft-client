@@ -3,9 +3,6 @@ import { useNavigate } from "react-router-dom";
 import service from "../../services/config";
 import { AuthContext } from "../../context/auth.context";
 
-//Bootstrap
-import { Container, Form, Button } from "react-bootstrap";
-
 function StoreCreate() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -41,39 +38,39 @@ function StoreCreate() {
   };
 
   return (
-    <div className="container my-4 px-4 py-8 bg-white rounded-lg shadow-md">
-      <h3 className="text-xl font-semibold mb-4">Create your store:</h3>
-      <div className="mb-4">
-        <label className="block text-gray-700">Store name:</label>
+    <div className="my-forms-container">
+      <h3 className="my-forms-title">Create your store:</h3>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Store name:</label>
         <input
           type="text"
           name="name"
           onChange={handleStoreName}
           defaultValue={name}
           required
-          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-input"
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">Description:</label>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Description:</label>
         <input
           as="textarea"
           rows={3}
           value={description}
           onChange={handleStoreDescription}
           required
-          className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-input"
         />
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">Category:</label>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Category:</label>
         <select
           value={category}
           onChange={handleStoreCategory}
           required
-          className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-gray-700 placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+          className="my-forms-select"
         >
           <option value="">Selecciona una categoría</option>
           <option value="bags_and_purses">Bolsos y monederos</option>
@@ -100,11 +97,7 @@ function StoreCreate() {
 
       <br />
 
-      <button
-        type="submit"
-        className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
-        onClick={handleSubmit}
-      >
+      <button type="submit" className="my-forms-button" onClick={handleSubmit}>
         Confirm changes
       </button>
     </div>

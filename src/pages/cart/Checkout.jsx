@@ -60,7 +60,7 @@ function Checkout() {
       </div>
 
       <div className="containerForm">
-        <label className="label">Surname:</label>
+        <label className="my-forms-label">Surname:</label>
         <input
           type="name"
           name="surname"
@@ -70,7 +70,7 @@ function Checkout() {
       </div>
 
       <div className="containerForm">
-        <label className="label">Shipping Address:</label>
+        <label className="my-forms-label">Shipping Address:</label>
         <input
           type="name"
           name="shippingAddress"
@@ -80,7 +80,7 @@ function Checkout() {
       </div>
 
       <div className="containerForm">
-        <label className="label">Payment Method:</label>
+        <label className="my-forms-label">Payment Method:</label>
         <select
           name="paymentMethod"
           defaultValue=""
