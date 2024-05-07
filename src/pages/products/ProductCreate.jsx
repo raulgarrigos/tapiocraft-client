@@ -59,7 +59,7 @@ function ProductCreate() {
             value={name}
             onChange={handleProductName}
             required
-            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
           />
         </Form.Group>
 
@@ -70,7 +70,7 @@ function ProductCreate() {
             value={description}
             onChange={handleProductDescription}
             required
-            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
           />
         </Form.Group>
 
@@ -81,7 +81,7 @@ function ProductCreate() {
             value={price}
             onChange={handleProductPrice}
             required
-            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
           />
         </Form.Group>
 
@@ -91,7 +91,7 @@ function ProductCreate() {
             value={category}
             onChange={handleProductCategory}
             required
-            className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
           >
             <option value="">Selecciona una categoría</option>
             <option value="bolsos_y_monederos">Bolsos y monederos</option>
@@ -127,7 +127,7 @@ function ProductCreate() {
             value={stock}
             onChange={handleProductStock}
             required
-            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
           />
         </Form.Group>
 

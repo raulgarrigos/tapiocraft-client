@@ -105,11 +105,11 @@ function Profile() {
           {stores.map((store) => (
             <div
               key={store._id}
-              className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200 hover:border-indigo-600 my-4"
+              className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200 hover:border-customBlue my-4"
             >
               <Link
                 to={`/store/${store._id}`}
-                className="text-2xl font-semibold text-indigo-600 hover:text-indigo-800"
+                className="text-2xl font-semibold text-customBlue hover:text-customBlue"
               >
                 <p>{store.name}</p>
               </Link>

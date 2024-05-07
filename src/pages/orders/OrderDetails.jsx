@@ -83,7 +83,7 @@ function OrderDetails() {
               {orderDetails.products.map((product) => (
                 <div
                   key={product._id}
-                  className=" my-4 px-4 py-auto bg-white rounded-lg shadow-md hover:scale-105 hover:border border-indigo-600"
+                  className=" my-4 px-4 py-auto bg-white rounded-lg shadow-md hover:scale-105 hover:border border-customBlue"
                 >
                   <Link
                     to={`/store/${product.product.store}/${product.product._id}`}

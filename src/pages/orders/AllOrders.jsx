@@ -37,11 +37,11 @@ function Orders() {
           return (
             <div
               key={order._id}
-              className="bg-white rounded-lg shadow-md w-2/4 p-4 transition duration-300 ease-in-out transform hover:scale-105 hover:border border-indigo-600 mx-auto"
+              className="bg-white rounded-lg shadow-md w-2/4 p-4 transition duration-300 ease-in-out transform hover:scale-105 hover:border border-customBlue mx-auto"
             >
               <Link to={`/profile/${params.userId}/orders/${order._id}`}>
                 <p className="font-bold">Pedido Nº:</p>
-                <p className="text-indigo-600"> {order._id}</p>
+                <p className="text-customBlue"> {order._id}</p>
               </Link>
             </div>
           );

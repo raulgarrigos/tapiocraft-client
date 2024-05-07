@@ -69,7 +69,7 @@ function Cart() {
           cartItems.map((item) => (
             <div
               key={item.product._id}
-              className="bg-white rounded-lg shadow-md p-4 transition duration-300 ease-in-out transform hover:scale-105 hover:border border-indigo-600 flex items-center"
+              className="bg-white rounded-lg shadow-md p-4 transition duration-300 ease-in-out transform hover:scale-105 hover:border border-customBlue flex items-center"
             >
               <div className="mr-4">
                 {item.product.images && item.product.images.length > 0 ? (
@@ -92,7 +92,7 @@ function Cart() {
               </div>
 
               <div className="flex-grow">
-                <p className="text-lg font-semibold mb-2 text-indigo-600">
+                <p className="text-lg font-semibold mb-2 text-customBlue">
                   {item.product.name} | {item.product.price}€ | Cantidad:{" "}
                   {item.quantity} | Total: {item.product.price * item.quantity}€
                 </p>

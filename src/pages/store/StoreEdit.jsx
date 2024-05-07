@@ -71,7 +71,7 @@ function StoreEdit() {
               name="name"
               onChange={handleInputChange}
               defaultValue={storeData.name}
-              className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
             />
           </div>
 
@@ -81,7 +81,7 @@ function StoreEdit() {
               name="description"
               onChange={handleInputChange}
               defaultValue={storeData.description}
-              className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
             />
           </div>
 
@@ -91,7 +91,7 @@ function StoreEdit() {
               name="category"
               onChange={handleInputChange}
               defaultValue={storeData.category}
-              className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
             >
               <option value="">Selecciona una categoría</option>
               <option value="Bolsos y monederos">Bolsos y monederos</option>
