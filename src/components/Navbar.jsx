@@ -13,10 +13,14 @@ function AppNavbar() {
   };
 
   return (
-    <nav className="bg-gray-900 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <a href="/" className="text-white font-bold text-2xl">
-          Tu Logo
+    <nav className="bg-customBlue p-2">
+      <div className="container mx-auto flex justify-between items-center font-bold">
+        <a href="/">
+          <img
+            src="images/TapioCraft Blue_smol.jpg"
+            alt="Logo"
+            className="h-16"
+          />
         </a>
         <ul className="flex space-x-4">
           <li>
