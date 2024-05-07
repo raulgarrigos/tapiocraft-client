@@ -62,18 +62,14 @@ function StoreDetails() {
                 to={`/store/${storeDetails._id}/edit`}
                 className="mr-2 inline-block"
               >
-                <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none">
-                  Edit store
-                </button>
+                <button className="main-btn">Edit store</button>
               </Link>
 
               <Link
                 to={`/store/${storeDetails._id}/add-product`}
                 className="ml-2 inline-block"
               >
-                <button className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none">
-                  Add a product
-                </button>
+                <button className="alt-btn">Add a product</button>
               </Link>
             </div>
           )}

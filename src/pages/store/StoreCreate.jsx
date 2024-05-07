@@ -73,25 +73,27 @@ function StoreCreate() {
           className="my-forms-select"
         >
           <option value="">Selecciona una categoría</option>
-          <option value="bags_and_purses">Bolsos y monederos</option>
-          <option value="necklaces">Collares</option>
-          <option value="rings">Anillos</option>
-          <option value="earrings">Pendientes</option>
-          <option value="bracelets">Pulseras</option>
-          <option value="body_jewelry">Joyería y bisutería corporal</option>
-          <option value="prints_and_printing">Impresiones y láminas</option>
-          <option value="photography">Fotografía</option>
-          <option value="painting">Pintura</option>
-          <option value="sculpture">Escultura</option>
-          <option value="glass_art">Arte en vidrio</option>
-          <option value="drawings_and_illustrations">
+          <option value="Bolsos y monederos">Bolsos y monederos</option>
+          <option value="Collares">Collares</option>
+          <option value="Anillos">Anillos</option>
+          <option value="Pendientes">Pendientes</option>
+          <option value="Pulseras">Pulseras</option>
+          <option value="Joyería y bisutería corporal">
+            Joyería y bisutería corporal
+          </option>
+          <option value="Impresiones y láminas">Impresiones y láminas</option>
+          <option value="Fotografía">Fotografía</option>
+          <option value="Pintura">Pintura</option>
+          <option value="Escultura">Escultura</option>
+          <option value="Arte en vidrio">Arte en vidrio</option>
+          <option value="Dibujos e ilustraciones">
             Dibujos e ilustraciones
           </option>
-          <option value="mixed_media_and_collage">
+          <option value="Soporte mixto y collage">
             Soporte mixto y collage
           </option>
-          <option value="fiber_arts">Arte en fibra</option>
-          <option value="dolls_and_miniatures">Muñecas y miniaturas</option>
+          <option value="Arte en fibra">Arte en fibra</option>
+          <option value="Muñecas y miniaturas">Muñecas y miniaturas</option>
         </select>
       </div>
 

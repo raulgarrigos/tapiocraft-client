@@ -64,34 +64,34 @@ function StoreEdit() {
       {isOwner && (
         <>
           <h3 className="my-forms-title">Update your store:</h3>
-          <div className="mb-4">
-            <label className="block text-gray-700">Store name:</label>
+          <div className="my-forms-containerForm">
+            <label className="my-forms-label">Store name:</label>
             <input
               type="text"
               name="name"
               onChange={handleInputChange}
               defaultValue={storeData.name}
-              className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
+              className="my-forms-input"
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700">Store description:</label>
+          <div className="my-forms-containerForm">
+            <label className="my-forms-label">Store description:</label>
             <textarea
               name="description"
               onChange={handleInputChange}
               defaultValue={storeData.description}
-              className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
+              className="my-forms-textarea"
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700">Store category:</label>
+          <div className="my-forms-containerForm">
+            <label className="my-forms-label">Store category:</label>
             <select
               name="category"
               onChange={handleInputChange}
               defaultValue={storeData.category}
-              className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
+              className="my-forms-select"
             >
               <option value="">Selecciona una categoría</option>
               <option value="Bolsos y monederos">Bolsos y monederos</option>
@@ -121,11 +121,7 @@ function StoreEdit() {
           </div>
 
           {storeData.owner === loggedUser._id && (
-            <button
-              type="submit"
-              className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded"
-              onClick={handleSubmit}
-            >
+            <button type="submit" className="alt-btn" onClick={handleSubmit}>
               Confirm changes
             </button>
           )}

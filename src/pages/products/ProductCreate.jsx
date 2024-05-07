@@ -49,93 +49,83 @@ function ProductCreate() {
   };
 
   return (
-    <Container className="my-4 px-4 py-8 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Añade tu producto</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="name" className="mb-4">
-          <Form.Label className="block text-gray-700">Nombre:</Form.Label>
-          <Form.Control
-            type="text"
-            value={name}
-            onChange={handleProductName}
-            required
-            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
-          />
-        </Form.Group>
+    <div className="my-forms-container">
+      <h3 className="my-forms-title">Add your product</h3>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Product name:</label>
+        <input
+          type="text"
+          name="name"
+          onChange={handleProductName}
+          className="my-forms-input"
+        />
+      </div>
 
-        <Form.Group controlId="description" className="mb-4">
-          <Form.Label className="block text-gray-700">Descripción:</Form.Label>
-          <Form.Control
-            type="text"
-            value={description}
-            onChange={handleProductDescription}
-            required
-            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
-          />
-        </Form.Group>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Product description:</label>
+        <textarea
+          name="description"
+          onChange={handleProductDescription}
+          className="my-forms-textarea"
+        />
+      </div>
 
-        <Form.Group controlId="price" className="mb-4">
-          <Form.Label className="block text-gray-700">Precio:</Form.Label>
-          <Form.Control
-            type="number"
-            value={price}
-            onChange={handleProductPrice}
-            required
-            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
-          />
-        </Form.Group>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Product price:</label>
+        <input
+          type="number"
+          name="price"
+          onChange={handleProductPrice}
+          className="my-forms-input"
+        />
+      </div>
 
-        <Form.Group controlId="category" className="mb-4">
-          <Form.Label className="block text-gray-700">Categoría:</Form.Label>
-          <Form.Select
-            value={category}
-            onChange={handleProductCategory}
-            required
-            className="form-select mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
-          >
-            <option value="">Selecciona una categoría</option>
-            <option value="bolsos_y_monederos">Bolsos y monederos</option>
-            <option value="collares">Collares</option>
-            <option value="anillos">Anillos</option>
-            <option value="pendientes">Pendientes</option>
-            <option value="pulseras">Pulseras</option>
-            <option value="joyeria_y_bisuteria_corporal">
-              Joyería y bisutería corporal
-            </option>
-            <option value="impresiones_y_laminas">Impresiones y láminas</option>
-            <option value="fotografia">Fotografía</option>
-            <option value="pintura">Pintura</option>
-            <option value="escultura">Escultura</option>
-            <option value="arte_en_vidrio">Arte en vidrio</option>
-            <option value="dibujos_e_ilustraciones">
-              Dibujos e ilustraciones
-            </option>
-            <option value="soporte_mixto_y_collage">
-              Soporte mixto y collage
-            </option>
-            <option value="arte_en_fibra">Arte en fibra</option>
-            <option value="munecas_y_miniaturas">Muñecas y miniaturas</option>
-          </Form.Select>
-        </Form.Group>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Product category:</label>
+        <select
+          name="category"
+          onChange={handleProductCategory}
+          className="my-forms-select"
+        >
+          <option value="">Selecciona una categoría</option>
+          <option value="Bolsos y monederos">Bolsos y monederos</option>
+          <option value="Collares">Collares</option>
+          <option value="Anillos">Anillos</option>
+          <option value="Pendientes">Pendientes</option>
+          <option value="Pulseras">Pulseras</option>
+          <option value="Joyería y bisutería corporal">
+            Joyería y bisutería corporal
+          </option>
+          <option value="Impresiones y láminas">Impresiones y láminas</option>
+          <option value="Fotografía">Fotografía</option>
+          <option value="Pintura">Pintura</option>
+          <option value="Escultura">Escultura</option>
+          <option value="Arte en vidrio">Arte en vidrio</option>
+          <option value="Dibujos e ilustraciones">
+            Dibujos e ilustraciones
+          </option>
+          <option value="Soporte mixto y collage">
+            Soporte mixto y collage
+          </option>
+          <option value="Arte en fibra">Arte en fibra</option>
+          <option value="Muñecas y miniaturas">Muñecas y miniaturas</option>
+        </select>
+      </div>
 
-        <Form.Group controlId="stock" className="mb-4">
-          <Form.Label className="block text-gray-700">
-            Nº de productos:
-          </Form.Label>
-          <Form.Control
-            type="number"
-            value={stock}
-            onChange={handleProductStock}
-            required
-            className="form-input mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue"
-          />
-        </Form.Group>
+      <div className="my-forms-containerForm">
+        <label className="my-forms-label">Product stock:</label>
+        <input
+          type="number"
+          name="stock"
+          onChange={handleProductStock}
+          className="my-forms-input"
+        />
+      </div>
 
-        <Button variant="primary" type="submit" className="mt-4">
-          Crear producto
-        </Button>
-      </Form>
-    </Container>
+      <button type="submit" className="alt-btn" onClick={handleSubmit}>
+        Create product{" "}
+      </button>
+    </div>
   );
 }
 
