@@ -107,7 +107,7 @@ function ProductDetails() {
           {(!loggedUser ||
             (loggedUser && loggedUser._id !== storeDetails?.owner)) && (
             <button
-              className="h-10 px-6 font-semibold rounded-full border border-slate-200 text-slate-900"
+              className="alt-btn"
               type="button"
               onClick={addToCart}
               disabled={productDetails.stock === 0}
@@ -117,17 +117,11 @@ function ProductDetails() {
           )}
           {loggedUser && loggedUser._id === storeDetails?.owner && (
             <>
-              <Link
-                to={`/store/${params.storeId}/${productDetails._id}/edit`}
-                className="flex-auto flex items-center justify-center space-x-4 h-10 px-6 font-semibold rounded-full bg-yellow-600 text-white"
-              >
-                <button className="focus:outline-none">Edit Product</button>
+              <Link to={`/store/${params.storeId}/${productDetails._id}/edit`}>
+                <button className="main-btn">Edit Product</button>
               </Link>
-              <Link
-                to={`/store/${params.storeId}/${productDetails._id}/image`}
-                className="flex-auto flex  items-center justify-center space-x-4 h-10 px-6 font-semibold rounded-full bg-violet-600 text-white"
-              >
-                <button className="focus:outline-none">Add Image</button>
+              <Link to={`/store/${params.storeId}/${productDetails._id}/image`}>
+                <button className="alt-btn">Add Image</button>
               </Link>
             </>
           )}
