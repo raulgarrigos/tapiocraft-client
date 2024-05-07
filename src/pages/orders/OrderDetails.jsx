@@ -70,7 +70,7 @@ function OrderDetails() {
                 <button
                   type="button"
                   onClick={handleCancelOrder}
-                  className="my-forms-deleteButton"
+                  className="delete-btn"
                 >
                   Cancel order
                 </button>

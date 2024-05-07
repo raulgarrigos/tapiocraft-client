@@ -13,9 +13,20 @@ body {
 }
 
 @layer components {
+  .main-btn {
+    @apply bg-customBlue hover:bg-darkBlue text-white font-semibold py-2 px-4 rounded my-4;
+  }
   .back-btn {
     @apply ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded;
   }
+
+  .delete-btn {
+    @apply ml-2 bg-red-500 hover:bg-red-600 text-white font-semibold my-2 py-2 px-4 rounded;
+  }
+  .alt-btn {
+    @apply bg-lightGreen hover:bg-darkGreen text-white font-semibold py-2 px-4 rounded my-4;
+  }
+
   .my-forms-container {
     @apply container w-3/4 my-4 mx-auto px-4 py-8 bg-white rounded-lg shadow-md;
   }
@@ -42,13 +53,5 @@ body {
 
   .my-forms-select {
     @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue;
-  }
-
-  .my-forms-button {
-    @apply bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded my-4;
-  }
-
-  .my-forms-deleteButton {
-    @apply ml-2 bg-red-500 hover:bg-red-600 text-white font-semibold my-2 py-2 px-4 rounded;
   }
 }

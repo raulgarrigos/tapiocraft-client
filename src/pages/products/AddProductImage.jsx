@@ -102,7 +102,7 @@ function AddProductImage() {
             <div className="my-forms-containerForm">
               {storeData.owner === loggedUser._id && (
                 <div>
-                  <button type="submit" className="my-forms-button">
+                  <button type="submit" className="main-btn">
                     Add
                   </button>
 

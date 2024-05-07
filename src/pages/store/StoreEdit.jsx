@@ -131,11 +131,7 @@ function StoreEdit() {
           )}
 
           {storeData.owner === loggedUser._id && (
-            <button
-              type="button"
-              onClick={handleDelete}
-              className="my-forms-deleteButton"
-            >
+            <button type="button" onClick={handleDelete} className="delete-btn">
               Delete store
             </button>
           )}

@@ -59,21 +59,19 @@ function Login() {
         />
       </div>
 
-      <button
-        type="submit"
-        style={{ backgroundColor: "#fdb14d" }}
-        className="my-forms-button"
-        onClick={handleLogin}
-      >
+      <button type="submit" className="main-btn" onClick={handleLogin}>
         Enter
       </button>
 
       <br />
       <br />
 
-      <p className="text-gray-800">
+      <p className="text-gray-900">
         Are you not registered yet?{" "}
-        <Link to={"/register"} className="text-blue-500 hover:text-blue-700">
+        <Link
+          to={"/register"}
+          className="font-bold text-customBlue hover:text-blue-600"
+        >
           Click here!
         </Link>
       </p>

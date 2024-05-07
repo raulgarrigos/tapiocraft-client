@@ -143,7 +143,7 @@ function ProfileEdit() {
       <button
         type="submit"
         style={{ backgroundColor: "#fdb14d" }}
-        className="my-forms-button"
+        className="main-btn"
         onClick={handleSubmit}
       >
         Confirm changes

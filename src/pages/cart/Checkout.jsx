@@ -94,7 +94,7 @@ function Checkout() {
           <option value="creditCard">Tarjeta de crédito/débito</option>
         </select>
       </div>
-      <button type="submit" className="my-forms-button" onClick={handleSubmit}>
+      <button type="submit" className="main-btn" onClick={handleSubmit}>
         Confirm order
       </button>
     </div>

@@ -78,9 +78,7 @@ function Profile() {
           <br />
           {loggedUser?._id === params.userId && (
             <Link to={"/profile/edit"} className="inline-block mr-2">
-              <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded">
-                Edit profile
-              </button>
+              <button className="main-btn">Edit profile</button>
             </Link>
           )}
 
@@ -89,9 +87,7 @@ function Profile() {
               to={`/profile/${params.userId}/orders`}
               className="inline-block mr-2"
             >
-              <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded">
-                Orders
-              </button>
+              <button className="alt-btn">Orders</button>
             </Link>
           )}
         </div>
@@ -119,9 +115,7 @@ function Profile() {
 
         {loggedUser?._id === params.userId && (
           <Link to={"/store/create"}>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mt-4">
-              Create store
-            </button>
+            <button className="main-btn">Create store</button>
           </Link>
         )}
       </div>

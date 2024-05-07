@@ -17,7 +17,7 @@ function AppNavbar() {
       <div className="container mx-auto flex justify-between items-center font-bold">
         <a href="/">
           <img
-            src="images/TapioCraft Blue_smol.jpg"
+            src="/images/TapioCraft Blue_smol.jpg"
             alt="Logo"
             className="h-16"
           />

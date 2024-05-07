@@ -129,12 +129,7 @@ function Register() {
         />
       </div>
 
-      <button
-        type="submit"
-        style={{ backgroundColor: "#fdb14d" }}
-        className="my-forms-button"
-        onClick={handleSignup}
-      >
+      <button type="submit" className="main-btn" onClick={handleSignup}>
         Sign up
       </button>
 

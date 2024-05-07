@@ -124,7 +124,7 @@ function ProductEdit() {
 
             <div className="my-forms-containerForm">
               {storeData.owner === loggedUser._id && (
-                <button type="submit" className="my-forms-button">
+                <button type="submit" className="main-btn">
                   Confirm changes
                 </button>
               )}
@@ -133,7 +133,7 @@ function ProductEdit() {
                 <button
                   type="button"
                   onClick={handleDelete}
-                  className="my-forms-deleteButton"
+                  className="delete-btn"
                 >
                   Delete product
                 </button>
