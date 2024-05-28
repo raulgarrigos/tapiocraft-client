@@ -160,51 +160,6 @@ function ProductDetails() {
           </p>
         </form>
       </div>
-
-      {/* Escribir una review */}
-      {loggedUser && (
-        <div className="font-sans bg-white rounded-lg shadow-md mt-3 py-3 px-3">
-          <form className="p-6" onSubmit={handleReviewSubmit}>
-            <div className="mb-6">
-              <h2 className="font-medium mb-3 text-lg">Write a Review</h2>
-              <label
-                htmlFor="rating"
-                className="block mb-1 text-sm font-medium text-slate-600"
-              >
-                Rating:
-              </label>
-              <input
-                type="number"
-                id="rating"
-                min="1"
-                max="5"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-                className="border rounded py-1 px-2 mb-3"
-                required
-              />
-              <label
-                htmlFor="comment"
-                className="block mb-1 text-sm font-medium text-slate-600"
-              >
-                Comment:
-              </label>
-              <textarea
-                id="comment"
-                rows="4"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                className="border rounded py-1 px-2 mb-3"
-                required
-              ></textarea>
-              <button type="submit" className="main-btn">
-                Submit Review
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
-
       {/* Sección de revisiones */}
       <div className="font-sans bg-white rounded-lg shadow-md mt-3 py-3 px-3">
         <div className="p-6">
@@ -225,6 +180,54 @@ function ProductDetails() {
           </div>
         </div>
       </div>
+
+      {/* Escribir una review */}
+      {loggedUser && loggedUser._id !== storeDetails?.owner && (
+        <div className="font-sans bg-white rounded-lg shadow-md mt-3 py-3 px-3 max-w-lg mx-auto">
+          <form className="p-6" onSubmit={handleReviewSubmit}>
+            <div className="mb-6">
+              <h2 className="font-medium mb-3 text-lg">Your opinion matters</h2>
+              <label
+                htmlFor="rating"
+                className="block mb-1 text-sm font-medium text-slate-600"
+              >
+                Rating:
+              </label>
+              <input
+                type="number"
+                id="rating"
+                min="1"
+                max="5"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
+                className="border rounded py-1 px-2 mb-3 w-full"
+                required
+              />
+              <label
+                htmlFor="comment"
+                className="block mb-1 text-sm font-medium text-slate-600"
+              >
+                Comment:
+              </label>
+              <textarea
+                id="comment"
+                rows="4"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                className="border rounded py-1 px-2 mb-3 w-full max-w-full"
+                style={{ maxWidth: "500px" }}
+                required
+              ></textarea>
+              <button
+                type="submit"
+                className="main-btn text-white py-2 px-4 rounded"
+              >
+                Submit Review
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

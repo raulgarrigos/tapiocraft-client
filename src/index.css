@@ -8,13 +8,12 @@ body {
   line-height: 1.6;
   font-weight: 400;
   color: #333;
-
-  background-color: #f8f9fa;
+  background-color: #fffeba;
 }
 
 @layer components {
   .main-btn {
-    @apply bg-customBlue hover:bg-darkBlue text-white font-semibold py-2 px-4 rounded my-4;
+    @apply bg-pistachoGreen hover:bg-darkBlue text-white font-semibold py-2 px-4 rounded my-4;
   }
   .back-btn {
     @apply ml-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded;
@@ -44,14 +43,14 @@ body {
   }
 
   .my-forms-input {
-    @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue;
+    @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-pistachoGreen;
   }
 
   .my-forms-textarea {
-    @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue;
+    @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-pistachoGreen;
   }
 
   .my-forms-select {
-    @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-customBlue;
+    @apply block w-full px-3 py-2 rounded-lg border border-gray-300 bg-white placeholder-gray-500 focus:outline-none focus:border-pistachoGreen;
   }
 }

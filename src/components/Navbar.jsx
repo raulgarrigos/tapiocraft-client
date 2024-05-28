@@ -13,7 +13,7 @@ function AppNavbar() {
   };
 
   return (
-    <nav className="bg-customBlue p-2">
+    <nav className="bg-pistachoGreen p-2">
       <div className="container mx-auto flex justify-between items-center font-bold">
         <a href="/">
           <img

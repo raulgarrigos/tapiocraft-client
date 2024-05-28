@@ -32,11 +32,11 @@ function AllStores() {
         return (
           <div
             key={store._id}
-            className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200 hover:border-customBlue"
+            className="mb-4 p-4 bg-gray-100 rounded-lg border-2 border-gray-200 hover:border-pistachoGreen"
           >
             <Link
               to={`/store/${store._id}`}
-              className="text-2xl font-semibold text-customBlue hover:text-customBlue"
+              className="text-2xl font-semibold text-pistachoGreen hover:text-pistachoGreen"
             >
               <h3>{store.name}</h3>
             </Link>

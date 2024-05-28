@@ -70,7 +70,7 @@ function Login() {
         Are you not registered yet?{" "}
         <Link
           to={"/register"}
-          className="font-bold text-customBlue hover:text-blue-600"
+          className="font-bold text-pistachoGreen hover:text-blue-600"
         >
           Click here!
         </Link>

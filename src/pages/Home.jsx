@@ -33,10 +33,10 @@ function Home() {
           <Link
             key={product._id}
             to={`/store/${product.store}/${product._id}`}
-            className="text-gray-800 hover:text-customBlue"
+            className="text-gray-800 hover:text-pistachoGreen"
           >
-            <div className="bg-white rounded-lg shadow-md p-4 transition duration-300 ease-in-out transform hover:scale-105 hover:border border-customBlue">
-              <h3 className="text-lg font-semibold mb-2 text-customBlue">
+            <div className="bg-white rounded-lg shadow-md p-4 transition duration-300 ease-in-out transform hover:scale-105 hover:border border-pistachoGreen">
+              <h3 className="text-lg font-semibold mb-2 text-pistachoGreen">
                 {product.name}
               </h3>
               <span className="text-lg font-semibold text-gray-700">
