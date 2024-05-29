@@ -11,6 +11,10 @@ body {
   background-color: #fffeba;
 }
 
+.star-svg {
+  display: inline-block !important;
+}
+
 @layer components {
   .main-btn {
     @apply bg-pistachoGreen hover:bg-darkBlue text-white font-semibold py-2 px-4 rounded my-4;
