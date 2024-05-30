@@ -189,7 +189,12 @@ function StoreDetails() {
                     Rating:
                   </label>
                   <div>
-                    <Rating onClick={handleRating} initialValue={0} required />
+                    <Rating
+                      onClick={handleRating}
+                      initialValue={rating}
+                      ratingValue={rating}
+                      required
+                    />
                   </div>
                   <label
                     htmlFor="comment"
