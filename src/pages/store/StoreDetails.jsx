@@ -98,7 +98,7 @@ function StoreDetails() {
 
   return (
     <div className="container mx-auto mt-8">
-      <div className="flex  lg:flex-row gap-8">
+      <div className="flex flex-col lg:flex-row gap-8">
         <div className="bg-white rounded-lg shadow-md p-6 flex-1">
           {storeDetails && (
             <div key={storeDetails._id}>
@@ -145,9 +145,11 @@ function StoreDetails() {
             </div>
           ))}
         </div>
+      </div>
 
+      <div className="mt-8">
         {/* Sección de reviews */}
-        <div className="font-sans bg-white rounded-lg shadow-md mt-3 py-3 px-3">
+        <div className="font-sans bg-white rounded-lg shadow-md py-3 px-3">
           <div className="p-6">
             <div>
               <h2 className="font-medium mb-3 text-lg">Reviews</h2>
