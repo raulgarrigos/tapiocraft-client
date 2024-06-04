@@ -200,7 +200,11 @@ function ProductDetails() {
             {reviews.map((review, index) => (
               <div key={index} className="mb-4">
                 <p className="text-sm font-medium text-slate-600">
-                  Rating: {review.rating}
+                  {review.rating === 5 && <span>⭐⭐⭐⭐⭐</span>}
+                  {review.rating === 4 && <span>⭐⭐⭐⭐</span>}
+                  {review.rating === 3 && <span>⭐⭐⭐</span>}
+                  {review.rating === 2 && <span>⭐⭐</span>}
+                  {review.rating === 1 && <span>⭐</span>}
                 </p>
                 <p className="text-sm text-slate-600">{review.comment}</p>
                 <p className="text-sm text-slate-600">
