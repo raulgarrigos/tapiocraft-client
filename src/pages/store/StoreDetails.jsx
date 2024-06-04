@@ -40,13 +40,17 @@ function StoreDetails() {
       setReviews(reviewsResponse.data);
 
       // Verificar si el usuario ha comprado el producto
-      const orderResponse = await service.get(`/orders/${loggedUser._id}/list`);
-      console.log(orderResponse.data);
-      const hasPurchased = orderResponse.data.some((order) =>
-        order.stores.includes(params.storeId)
-      );
-      console.log("Has purchased:", hasPurchased);
-      setHasPurchased(hasPurchased);
+      if (loggedUser) {
+        const orderResponse = await service.get(
+          `/orders/${loggedUser._id}/list`
+        );
+        console.log(orderResponse.data);
+        const hasPurchased = orderResponse.data.some((order) =>
+          order.stores.includes(params.storeId)
+        );
+        console.log("Has purchased:", hasPurchased);
+        setHasPurchased(hasPurchased);
+      }
 
       setIsLoading(false);
     } catch (error) {
