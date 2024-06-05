@@ -203,6 +203,7 @@ function StoreDetails() {
                       onClick={handleRating}
                       initialValue={rating}
                       ratingValue={rating}
+                      allowFraction={true}
                       required
                     />
                   </div>

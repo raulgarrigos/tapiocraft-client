@@ -201,12 +201,18 @@ function ProductDetails() {
               <div key={index} className="mb-4">
                 <p className="text-sm font-medium text-slate-600">
                   {review.rating === 5 && <span>⭐⭐⭐⭐⭐</span>}
+                  {review.rating === 4.5 && <span>⭐⭐⭐⭐</span>}
                   {review.rating === 4 && <span>⭐⭐⭐⭐</span>}
+                  {review.rating === 3.5 && <span>⭐⭐⭐</span>}
                   {review.rating === 3 && <span>⭐⭐⭐</span>}
+                  {review.rating === 2.5 && <span>⭐⭐</span>}
                   {review.rating === 2 && <span>⭐⭐</span>}
+                  {review.rating === 1.5 && <span>⭐</span>}
                   {review.rating === 1 && <span>⭐</span>}
+                  {review.rating === 0.5 && <span>⭐</span>}
                 </p>
                 <p className="text-sm text-slate-600">{review.comment}</p>
+
                 <p className="text-sm text-slate-600">
                   Written by: {review.user.username}
                 </p>
@@ -242,6 +248,7 @@ function ProductDetails() {
                   onClick={handleRating}
                   initialValue={rating}
                   ratingValue={rating}
+                  allowFraction={true}
                   required
                 />
               </div>
